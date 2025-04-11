@@ -1,0 +1,83 @@
+ $nm_params
+ namecomment    =  '******* PARAMS section *******'
+ !Paths/mixed paths output is to be layer-to-space optical depth
+ KLayer2Sp      = 1
+ !no water continuum
+ KCKD           = -1
+ !short header
+ kLongOrShort   = -1
+ $end
+
+ $nm_frqncy
+ namecomment    =  '******* FRQNCY section *******'
+ rf1            =  605.0
+ rf2            = 1780.0
+ $end
+
+ $nm_molgas
+ namecomment    =  '******* MOLGAS section *******'
+ !use all gases in MOLGAS
+ iNGas          = -1
+ $end
+
+ $nm_xscgas
+ namecomment    =  '******* XSCGAS section *******'
+ !use all gases in XSCGAS
+ iNxsec         = -1
+ $end
+
+ $nm_prfile
+ namecomment    =  '******* PRFILE section *******'
+ caPfname       =  '../Prof_fow/fow_regXPROFX.op'
+ $end
+
+ $nm_weight
+ namecomment    =  '******* WEIGHT section *******'
+ !2 sets of mixed paths: 1=all, 2=NH3 only
+ iNpmix         = 2
+ caaMixFileLines= 
+    !all gases have weight 1.0
+    '1   -1    1.0   -1',
+    !all gases have weight 0.0 except NH3=1
+    '2   -1    0.0    1',
+    '11 1.0'
+ $end
+
+ $nm_radnce
+ namecomment    =  '******* RADNCE section *******'
+ !1 atmospheres
+ iNatm          = 0
+ $end
+
+ $nm_jacobn
+ namecomment    =  '******* JACOBN section *******'
+ !no jacobians
+ iJacob         = 0
+ $end
+
+ $nm_spectr
+ namecomment    =  '******* SPECTRA section ******'
+ !no external spectra
+ iNumNewGases   = -1
+ $end
+
+ $nm_scattr
+ namecomment    =  '******* SCATTR section *******'
+ !no scattering
+ iNclouds       = -1
+ $end
+
+ $nm_output
+ namecomment    =  '******* OUTPUT section *******'
+ caComment      = 'profile XPROFX FOWp'
+ !dump out ALL mixed paths
+ iaPrinter(1)   =    2
+ iaGPMPAtm(1)   =    -1
+ iaNp(1)        =    -1
+ iaaOp(1,1)     =    -1
+
+ $end
+
+ $nm_endinp
+ namecomment    =  '******* ENDINP section *******'
+ $end

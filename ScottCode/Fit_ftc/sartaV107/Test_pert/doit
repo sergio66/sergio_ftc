@@ -1,0 +1,49 @@
+#!/bin/sh
+
+# Run standard profile
+echo 'doing unperturbed profile'
+../Bin/sarta_apr08_m130 fin=reg1013op.rtp fout=reg1013rad_m130.rtp
+../Bin/sarta_apr08_m140 fin=reg1013op.rtp fout=reg1013rad_m140.rtp
+../Bin/sarta_apr08_m150 fin=reg1013op.rtp fout=reg1013rad_m150.rtp
+../Bin/sarta_apr08_m130x fin=reg1013op.rtp fout=reg1013rad_m130x.rtp
+../Bin/sarta_apr08_m140x fin=reg1013op.rtp fout=reg1013rad_m140x.rtp
+/asl/packages/sartaV107/Bin/sarta_dec05_wcononly fin=reg1013op.rtp fout=reg1013rad_dec05_wcononly.rtp
+
+# Run bumped CO2 profile
+echo 'doing CO2'
+../Bin/sarta_apr08_m130 fin=reg1013op_co2_p1.rtp fout=reg1013rad_co2_m130.rtp
+../Bin/sarta_apr08_m140 fin=reg1013op_co2_p1.rtp fout=reg1013rad_co2_m140.rtp
+../Bin/sarta_apr08_m150 fin=reg1013op_co2_p1.rtp fout=reg1013rad_co2_m150.rtp
+../Bin/sarta_apr08_m130x fin=reg1013op_co2_p1.rtp fout=reg1013rad_co2_m130x.rtp
+../Bin/sarta_apr08_m140x fin=reg1013op_co2_p1.rtp fout=reg1013rad_co2_m140x.rtp
+/asl/packages/sartaV107/Bin/sarta_dec05_wcononly fin=reg1013op_co2_p1.rtp fout=reg1013rad_co2_dec05_wcononly.rtp
+
+# Run bumped SO2 profile
+echo 'doing SO2'
+../Bin/sarta_apr08_m130 fin=reg1013op_so2_x10.rtp fout=reg1013rad_so2_m130.rtp
+../Bin/sarta_apr08_m140 fin=reg1013op_so2_x10.rtp fout=reg1013rad_so2_m140.rtp
+../Bin/sarta_apr08_m150 fin=reg1013op_so2_x10.rtp fout=reg1013rad_so2_m150.rtp
+../Bin/sarta_apr08_m130x fin=reg1013op_so2_x10.rtp fout=reg1013rad_so2_m130x.rtp
+../Bin/sarta_apr08_m140x fin=reg1013op_so2_x10.rtp fout=reg1013rad_so2_m140x.rtp
+/asl/packages/sartaV107/Bin/sarta_dec05_wcononly fin=reg1013op_so2_x10.rtp fout=reg1013rad_so2_dec05_wcononly.rtp
+
+# Run bumped HNO3 profile
+echo 'doing HNO3'
+../Bin/sarta_apr08_m130 fin=reg1013op_hno3_p10.rtp fout=reg1013rad_hno3_m130.rtp
+../Bin/sarta_apr08_m140 fin=reg1013op_hno3_p10.rtp fout=reg1013rad_hno3_m140.rtp
+../Bin/sarta_apr08_m150 fin=reg1013op_hno3_p10.rtp fout=reg1013rad_hno3_m150.rtp
+../Bin/sarta_apr08_m130x fin=reg1013op_hno3_p10.rtp fout=reg1013rad_hno3_m130x.rtp
+../Bin/sarta_apr08_m140x fin=reg1013op_hno3_p10.rtp fout=reg1013rad_hno3_m140x.rtp
+/asl/packages/sartaV107/Bin/sarta_dec05_wcononly fin=reg1013op_hno3_p10.rtp fout=reg1013rad_hno3_dec05_wcononly.rtp
+
+# Run bumped N2O profile
+echo 'doing N2O'
+../Bin/sarta_apr08_m130 fin=reg1013op_n2o_p1.rtp fout=reg1013rad_n2o_m130.rtp
+../Bin/sarta_apr08_m140 fin=reg1013op_n2o_p1.rtp fout=reg1013rad_n2o_m140.rtp
+../Bin/sarta_apr08_m150 fin=reg1013op_n2o_p1.rtp fout=reg1013rad_n2o_m150.rtp
+../Bin/sarta_apr08_m130x fin=reg1013op_n2o_p1.rtp fout=reg1013rad_n2o_m130x.rtp
+../Bin/sarta_apr08_m140x fin=reg1013op_n2o_p1.rtp fout=reg1013rad_n2o_m140x.rtp
+/asl/packages/sartaV107/Bin/sarta_dec05_wcononly fin=reg1013op_n2o_p1.rtp fout=reg1013rad_n2o_dec05_wcononly.rtp
+
+echo 'done'
+### end of program ###

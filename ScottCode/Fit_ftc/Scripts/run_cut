@@ -1,0 +1,130 @@
+FITSET=$1
+LIST=$2
+FIN=$3
+FOUT=$4
+
+###############################################################################
+# Edit filenames as needed
+##########################
+#
+# Program
+PROGRAM='../Bin/cutlistcoef_'
+#
+# Temporary files
+JIN='jin'
+JOUT='jout'
+JUNK1='xxx1'
+JUNK2='xxx2'
+#
+###############################################################################
+# Supported sets
+################
+#
+ALLSET='{ set1 set2 set3 set4 set5 set6 set7 optran co2 }'
+# Note: optran is raw optran, not optran with header
+#
+###############################################################################
+
+# Prompt for input if not already specified on command-line
+X1=$FITSET'-'
+X2=$LIST'-'
+X3=$FIN'-'
+X4=$FOUT'-'
+
+if (test $X1 = '-')
+then
+   echo 'Which set? '$ALLSET
+   read FITSET
+fi
+
+
+if (test $X2 = '-')
+then
+   echo 'Enter name of list: '
+   read LIST
+fi
+
+
+if (test $X3 = '-')
+then
+   echo 'Enter name of the input coefs to be cut: '
+   read FIN
+fi
+
+
+if (test $X4 = '-')
+then
+   echo 'Enter name for the output coefs: '
+   read FOUT
+fi
+
+
+###############################################################################
+# Check FITSET
+IOK=`echo $ALLSET | grep " $FITSET " | cut -f1 -d" "`
+if (test -z $IOK'')
+then
+   echo 'error: unsupported <fit set> = '$FITSET
+   echo 'supported <fit set> = '$ALLSET
+   exit
+fi
+
+
+###############################################################################
+# Determine output dir from FOUT
+
+II='1'
+IS='0'
+OUTNAME=$FOUT
+OUTDIR=''
+while (test $II -gt 0)
+do
+   # Find index of first "/" in string
+   II=`expr index $OUTNAME '/'`
+   IL=`expr length $OUTNAME`
+   IIP1=`expr $II + 1`
+   JUNK=$IS
+   IS=`expr $JUNK + $II`
+   JUNK=$OUTNAME
+   OUTNAME=`echo $JUNK | cut -c$IIP1-$IL`
+   if (test $IS -gt 0)
+   then
+      OUTDIR=`echo $FOUT | cut -c1-$IS`
+   fi
+done
+
+###############################################################################
+# Check files exist
+
+
+if (test ! -r $LIST)
+then
+   echo 'Error: did not find list file: '$LIST
+   exit
+fi
+
+
+if (test ! -r $FIN)
+then
+   echo 'Error: did not find input coef file: '$FIN
+   exit
+fi
+
+
+if (test ! -d $OUTDIR)
+then
+   echo 'Error: did not find output dir: '$OUTDIR
+   exit
+fi
+
+
+###############################################################################
+
+
+echo $LIST > $JIN
+echo $FIN >> $JIN
+echo $FOUT >> $JIN
+$PROGRAM$FITSET < $JIN > $JOUT
+
+
+### end of file ###

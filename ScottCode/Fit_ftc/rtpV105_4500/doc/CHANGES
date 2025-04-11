@@ -1,0 +1,235 @@
+
+V105: minor update, 02 Feb 2007
+----
+MAXGASID was increased from 70 to 204 to allow for an expanded list
+of possible HITRAN and cross-section (XSEC) gas IDs.  Gas IDs 201-204
+are intended for use with up to four cloud profiles (201=cloud1 to
+204=cloud4).
+
+
+V104 to V105 changes
+---------------------
+
+Version 105 is mainly a cleanup of low level C code to work better
+with HDF character arrays, which were added in V104 as a data type.
+
+On reads, the C/Fortran interface now handles vdata fields that are
+longer than the C/Fortran structure fields better; over-size fields
+are truncated and a warning is printed to stderr.
+
+Some word-alignment problems on 64-bit IRIX systems were fixed.
+
+
+V103 to V104 changes
+---------------------
+
+The following fields were added:
+
+NEW HEADER FIELDS
+
+  udef  - user define float32 array, to MAXUDEF
+	  (this is in addition to the scalar udef1 and udef2)
+
+NEW PROFILE FIELDS
+
+Surface data
+
+  smoist  - soil moisture fraction, float32 scalar, units pct
+
+Atmospheric data
+
+  txover  - temperature crossover pressure, e.g., from RAOB to model
+  gxover  - constituent crossover pressure, float32 array, to MAXGAS
+
+Common radiance data
+
+  mwasang   - AMSU-A scan or view angle
+  mwaszen   - AMSU-A satellite zenith angle
+  mwbsang   - AMSU-B/HSB scan or view angle
+  mwbszen   - AMSU-B/HSB satellite zenith angle
+
+Observed radiance data
+
+  calflag   - uchar8 string to MAXCHAN, the AIRS variable CalFlag
+
+User defined 
+
+  pnote  - char8 string, to MAXPNOTE, short profile description
+  udef   - user define float32 array, to MAXUDEF
+	   (this is in addition to the scalar udef1 and udef2)
+
+The initialization and dump routines were updated to deal with
+character arrays, and some assorted bug fixes and cleanups were
+done.
+
+
+V102 to V103 changes
+---------------------
+
+Added header fields 
+
+  vcmin  - chan set min freq, including wings
+  vcmax  - chan set max freq, including wings
+
+Added profile field
+
+  zobs   - satellite height
+
+
+V101 to V102 changes
+---------------------
+
+Profile fields "pobs" (radiance observer pressure), "upwell"
+(a flag for upwelling or downwelling radiation) and "landtype"
+were added.
+
+Profile fields were rearranged into slightly different groups:
+surface data, MW surface data, atmospheric data, calculated radiance
+data, and observed radiance data.
+
+The old all-in-one package was broken up into bin, doc, include,
+lib, src, test, and utils directories.  The makefiles were revised
+to reflect this; the src directory makefile installs librtp.a in
+the lib directory, and user-relevant include files in the "include"
+directory.  The separate makefiles for Fortran and C programs were
+merged.
+
+A version string is now defined in rtp.h, and returned to Fortran
+users by the "rtpvers" procedure
+
+Attribute max length was increased to 1024.  This is set in
+pvdefs.h, with the definition rtpdefs.f set to match.  
+
+The following max values are now set in pvdefs.h, with corresponding
+fields in rtpdefs.f
+
+  #define MAXVNAME 64     /* bound vdata and field name length    */
+  #define MAXANAME 64     /* bound attribute name length          */
+  #define MAXATEXT 1024   /* bound single attribute value         */
+
+Reading attributes that are too long now returns an error.
+
+Scott's rtpsubset utility was added to the utils directory.
+
+A top-level Makefile was added, allowing all build parmeters to
+be set in one place.
+
+A 4-byte fill variable was added to the profile structure to move the
+8-byte real field "rtime" to an 8-byte boundary.  This was needed for
+64-bit SGI IRIX, which seems to want 8-byte reals at 8-byte boundaries, 
+even when "align_aggregate" was set to 2 or 4.
+
+
+V100 to V101 changes
+---------------------
+
+TAI is now a float64
+
+The Makefile has been updated to work with 64-bit IRIX, this
+requires the HDF4.1r4 release.  (Probably r3 will also work,
+though with some editing of the HDF build config files, but
+r4 works with 64 bit IRIX with no extra tweaking.)
+
+assorted documentation and bug fixes
+
+
+V099 to V100 changes
+---------------------
+
+Instrument type codes were added for MW and IR instruments
+
+ irinst        IR instrument code     scalar int
+ mwinst        MW instrument code     scalar int
+
+A cloud type field was added
+
+ ctype         cloud type code        scalar int32
+
+The following profile field names were change
+
+ findex        file (granule) index,  was "granule"
+ atrack        along-track index,     was "scanline"
+ xtrack        cross-track index,     was "footprint"
+
+field descriptions were added to the Fortran structure
+definitions
+
+Assorted bug fixes, thanks to feeback from Scott Hannon
+and Phil Rosencranz
+
+
+V098 to V099 changes
+---------------------
+
+The following max size fields have been removed from the RTP vdata
+header record
+
+ mrho      max num of refl pts    scalar int32   [0,MAXRHO]
+ memis     max num of emis pts    scalar int32   [0,MAXEMIS]
+ mlevs     max number of levels   scalar int32   [0,MAXLEV]
+
+However, these three fields, plus two more MW fields
+
+ mwmemis   max MW emis pts        scalar int32   [0,MWMAXEMIS]
+ mwmstb    max MW sTb pts         scalar int32   [0,MWMAXSTB]
+
+are still in the Fortran/C header structure.  Some discussion of
+these fields was added to the Fortran API section of the RTP spec.
+The main reminder there is that these need to be set to something 
+between zero and the MAX, as the writer uses these values to set
+the actual vdata field sizes. 
+
+At Scott's suggestion the header field "lfract" was changed to
+"landfrac", and "mwemiss" to "mwemis", also his bug fixes and
+suggestions for the documentation were added.
+
+
+V097 to V098 changes
+---------------------
+
+A new profile type AIRSLAY was created to flag the AIRS
+pseudo-layers
+
+The satellite and sun angle profile fields were modified and
+extended as follows
+
+  scanang       satellite scan angle       was satang
+  satzen        satellite zenith angle     was satelv
+  satazi        satellite azimuth angle    new field
+  solzen        sun zenith angle           was sunang
+  solazi        sun azimuth angle          new field
+
+Other new profile fields
+
+  lfract        land fraction
+  wspeed        wind speed
+  wsource       wind source
+ 
+  mwnemis       number of MW emissivity points
+  mwefreq       MW emissivity frequencies
+  mwemiss       MW emissivities
+
+  mwnstb        number of MW surface Tbs
+  mwsfreq       MW surface Tb frequencies
+  mwstb         MW surface Tbs
+
+New observation fields
+
+  granule       AIRS granule number
+  scanline      AIRS scanline
+  footprint     AIRS footprint number
+
+New header fields
+
+  mwnchan       number of MW channels  scalar int32   count
+  mwvchan       MW channel freq's      nwmchan float  GHZ
+
+Possibly deprecated header fields:
+
+  mrho   [3]    max num of refl pts    scalar int32   [0,MAXRHO]
+  memis  [3]    max num of emis pts    scalar int32   [0,MAXEMIS]
+  mlevs  [3]    max number of levels   scalar int32   [0,MAXLEV]
+
+These probably aren't needed since the Fortran and C users will
+just use MAXRHO, MAXEMIS, and MAXLEV
+

@@ -1,0 +1,13 @@
+Basically from http://noiselab.ucsd.edu/ECE228/, which gave a link to the online book by Chris M Bishop
+  https://www.microsoft.com/en-us/research/people/cmbishop/
+and codes
+  http://prml.github.io/
+
+which provide a link to 
+  git clone https://github.com/PRML/PRMLT.git
+
+cd /home/sergio/MATLABCODE/NeuralNet_KernelRegression/BooksandPapers/Bishop_PatternLearning/PRMLT/demo/ch06
+matlab
+>> addpath /home/sergio/MATLABCODE/NeuralNet_KernelRegression/BooksandPapers/Bishop_PatternLearning/PRMLT/chapter06
+>> addpath /home/sergio/MATLABCODE/NeuralNet_KernelRegression/BooksandPapers/Bishop_PatternLearning/PRMLT/common
+>> knReg_demo -- calls knReg and KnRegPred

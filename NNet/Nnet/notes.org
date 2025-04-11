@@ -1,0 +1,7 @@
+* Channel 49 Results
+
+Trained on 1/2 of set, tested on independent set (1/2)
+
+| Dependent set   | 0.0018  +- 0.0058 |
+| Independent set | 0.0009  +- 0.0065 |
+

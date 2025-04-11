@@ -1,0 +1,8 @@
+! Example profile list for SUBSET
+! Suppose we want profiles with index 10, 33, 57, 124, 333
+! Then the profile list is
+ 10
+ 33
+ 57
+ 124
+ 333

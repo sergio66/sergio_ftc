@@ -1,0 +1,10 @@
+runhno3_130x > jout130x
+runhno3_140x > jout140x
+sleep 5
+mv ../HNO3trans_long ../Data155770
+sleep 5
+runhno3_130 > jout130
+runhno3_140 > jout140
+runhno3_150 > jout150
+sleep 5
+mv ../HNO3trans_long ../Data156339

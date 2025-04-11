@@ -1,0 +1,22 @@
+Assuming the top level directory you want to start copying from is
+/home/sergio/want-to-copy and you want to put it in, say,
+/asl/s1/want-to-copy, a simple one-liner would be:
+
+rsync -av --exclude="*.dat" --exclude="*.mat" /home/sergio/want-to-copy /asl/s1
+
+(*no ending '/' on the home of the destination, /asl/s1 in this
+example)
+
+This will create 'want-to-copy' and child directories under
+/asl/s1 and then copy all files except those matching *.dat/*.mat.  If
+you have a bunch of things to exclude, you can put the exclude
+patterns into a file and read from that instead of having N
+--excludes.
+
+If rsync causes any concern, I would do a simple 2/3 step
+copy and delete: - make a straight recursive copy of the directories
+and all their contents - run 'find <path to directory I just made>
+-name "*.dat" -o -name "*.mat" -print (make sure the files that come
+up make sense as those you want to delete) - if last seems sensible,
+re-run find command but replace '-print' with '-delete'
+

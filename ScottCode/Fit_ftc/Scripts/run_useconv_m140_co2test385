@@ -1,0 +1,135 @@
+FIN=$1
+TAUSET=$2
+
+###############################################################################
+# Edit this section as needed
+###
+PROFS=' 1  2  3  4  5  6  7  8 9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+       25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48'
+REFPROF='profref_trace385'
+PROGRAM='../Bin/useconv'
+CONCOEF='../Con/con1_m140all.dat'
+DATAEXT='.dat'
+TSURF='-1'
+ESURF='-1'
+LBOT='97'
+OUTDIR='../Output_useconv'
+OUTRAD='rad_'
+OUTTAU='tau_'
+OUTTEMP='xxx'
+OUTNAME='co2test_m140_fow_long_'
+###############################################################################
+
+# Check if FIN is OK
+if (test -z $FIN'')
+then
+   echo ''
+   echo 'usage: run_useconv <name prefix> <tau#>'
+   echo 'The full input filename will be <name prefix><prof#>'$DATAEXT
+   echo 'and useconv will use transmittance index <tau#>.'
+   echo ''
+   exit
+fi
+
+
+# Check if TAUSET is OK
+if (test -z $TAUSET'')
+then
+   echo 'error: no <tau#> specified'
+   echo 'usage: run_useconv <dir> <name prefix> <tau#>'
+   echo 'The input filename will be <dir>/<name prefix><prof#>'$DATAEXT
+   echo 'and useconv will use transmittance index <tau#>.'
+   echo ''
+   exit
+fi
+
+###############################################################################
+# Separate input dir and local filename prefix from FIN
+
+II='1'
+IS='0'
+NAME=$FIN
+INDIR=''
+while (test $II -gt 0)
+do
+   # Find index of first "/" in string
+   II=`expr index $NAME '/'`
+   IL=`expr length $NAME`
+   IIP1=`expr $II + 1`
+   JUNK=$IS
+   IS=`expr $JUNK + $II`
+   JUNK=$NAME
+   NAME=`echo $JUNK | cut -c$IIP1-$IL`
+   if (test $IS -gt 0)
+   then
+      INDIR=`echo $FIN | cut -c1-$IS`
+   fi
+done
+
+
+###############################################################################
+
+
+# Check if the input dir exists
+if (test ! -d $INDIR)
+then
+   echo 'error: did not find input dir: '$INDIR
+fi                       
+
+
+# Test the ref profile file exists
+if (test ! -r $REFPROF)
+then
+   echo 'error: did not find ref prof file: '$REFPROF
+   exit
+fi
+
+
+# Test the con coef file exists
+if (test ! -r $CONCOEF)
+then
+   echo 'error: did not find water con coef file: '$CONCOEF
+   exit
+fi
+
+
+###############################################################################
+
+DATE=`date`
+echo 'Start run_useconv at: '$DATE
+
+
+# Make sure concatenated output files do not already exist
+rm -f  $OUTDIR'/'$OUTRAD$OUTNAME$TAUSET  $OUTDIR'/'$OUTTAU$OUTNAME$TAUSET
+
+# Loop over profiles
+for iprof in $PROFS
+do
+   INNAME=$FIN$iprof$DATAEXT
+   # Test that data file exists
+   if (test -r $INNAME)
+   then
+      echo 'doing profile '$iprof
+      echo $CONCOEF > jin
+      echo $OUTTEMP'r' >> jin
+      echo $OUTTEMP't' >> jin
+      echo $REFPROF >> jin
+      echo $INNAME >> jin
+      echo $TAUSET >> jin
+      echo $LBOT >> jin
+      echo $TSURF $ESURF >> jin
+      $PROGRAM < jin > jout
+      #
+      # Concatenate temporary output files onto all-profiles files
+      cat $OUTTEMP'r' >> $OUTDIR'/'$OUTRAD$OUTNAME$TAUSET
+      cat $OUTTEMP't' >> $OUTDIR'/'$OUTTAU$OUTNAME$TAUSET
+      rm $OUTTEMP'r' $OUTTEMP't'
+   else
+      echo 'error: did not find trans data file: '$INNAME
+      exit
+   fi
+done
+#rm jin jout
+
+DATE=`date`
+echo 'Finish run_useconv at: '$DATE

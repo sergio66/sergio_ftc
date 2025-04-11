@@ -1,0 +1,157 @@
+BAND=$1
+YOFF='130'
+###############################################################################
+# Edit the following section as necessary
+#########################################
+
+#########
+#PROFILES
+# Assign profile numbers
+#PROFILES=' 1'
+PROFILES=' 1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+          21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+          41 42 43 44 45 46 47 48'
+NPROF=`echo $PROFILES | wc -w`
+#echo 'nprof='$NPROF
+
+
+#######
+# Specify name of HDF-format SRF lookup table to be used for convolutions
+# Note: this will be linked to "srftable.hdf" in OUTDIR
+SRFNAME='../SRF/srftables_m'$YOFF'f_withfake_mar08.hdf'
+
+
+#######
+#OUTDIR
+# Assign output dir for KCARTA & MATLAB output
+OUTDIR='../Therm_'$BAND
+
+
+#######
+#ALLBAND
+# Supported bands
+ALLBAND='{ long short }'
+
+
+#######
+# MTEMPLATE
+# matlab template script (same for all modules)
+MTEMPLATE='mtemplate_therm.m'
+
+
+#######
+#JUNK[12KM]
+# Specify junk/temp filenames
+JUNK1='xxx1'
+JUNK2='xxx2'
+JUNKK='xxx.nml'
+JUNKM='xxx.m'
+JUNKMOUT='xxxm'
+
+
+#########
+#KOUTNAME
+# Assign KCARTA output filename
+KOUTNAME='kcarta_out.bin'
+
+
+#########
+#KCARTAEXE
+# Specify KCARTA executable
+KCARTAEXE='../BIN/kcarta.x'
+
+
+###############################################################################
+###############################################################################
+###############################################################################
+# The code below should not require modification
+################################################
+DATE=`date`
+HERE=`pwd`
+
+
+# Verify BAND is supported
+if (test -z $BAND'')
+then
+   echo 'usage: runtherm <BAND>'
+   echo '       supported BAND : '$ALLBAND
+   exit
+else
+   IOK=`echo $ALLBAND | grep " $BAND " | cut -f1 -d" "`
+   if (test -z $IOK'')
+   then
+      echo 'Error: unsupported <BAND> = '$BAND
+      exit
+   fi
+fi
+
+
+MOUTNAME='therm_m'$YOFF'f_'$BAND'_'
+KTEMPLATE='ktherm_'$BAND'.nml'
+if (test ! -r $KTEMPLATE)
+then
+   echo 'Error: can not read KCARTA template file '$KTEMPLATE'. Quitting'
+   exit
+fi
+echo 'Starting therm run for band '$BAND', date: '$DATE
+
+
+# Pepare OUTDIR
+if (test ! -d $OUTDIR)
+then
+   mkdir $OUTDIR
+fi
+cp -p readkc3.m $OUTDIR
+cd $OUTDIR
+rm 'srftable.hdf' $KOUTNAME 2> /dev/null || true
+ln -s $SRFNAME 'srftable.hdf'
+cd $HERE
+
+
+# Delete any previous versions of the junk files
+HERE=`pwd`
+rm $JUNK1 $JUNK2 $JUNKK  2> /dev/null || true
+
+
+# Loop over the profiles
+for iprof in $PROFILES
+do
+   echo '***** doing profile '$iprof' *****'
+
+   # Create a junk KCARTA input file for the current profile
+   sed "s/XPROFX/$iprof/" $KTEMPLATE > $JUNKK
+
+   # Run KCARTA
+   FILENAME=$OUTDIR'/'$KOUTNAME
+   $KCARTAEXE $JUNKK $FILENAME
+
+   # Modify the MATLAB template script for the current profile
+   sed "s/XBANDX/$BAND/
+        s/XMOUTNAMEX/$MOUTNAME$iprof/
+        s/XKOUTNAMEX/$KOUTNAME/" $MTEMPLATE > $OUTDIR'/'$JUNKM
+
+   # Run matlab using MTEMPLATE
+   cd $OUTDIR
+   matlab -nojvm -display /dev/null < $JUNKM > $JUNKMOUT
+
+   # Test that the matlab output file exists and is not empty
+   while (test ! -s $MOUTNAME$iprof'.mat')
+   do
+      # Something went wrong!  Wait 1 minute and then re-try
+      echo 'MATLAB failed!  Waiting 1 minute, then will try again'
+      sleep 60
+      matlab -nojvm -display /dev/null < $JUNKM >> $JUNKMOUT
+   done
+
+   # Wait a few seconds and then delete the kcarta file
+   sleep 4
+   rm $KOUTNAME
+
+   cd $HERE   
+
+done
+# End of loop on profiles
+
+
+DATE=`date`
+echo 'Ending runs for AIRS band '$BAND', date: '$DATE

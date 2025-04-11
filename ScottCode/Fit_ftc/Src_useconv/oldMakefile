@@ -1,0 +1,68 @@
+###############################################################################
+# Compiler info: edit as needed
+###############
+# OPT : compiler options
+# FLIB : fortran libraries (needs LAPACK)
+# F77 : fortran compiler
+
+# -----------------------------------------------------------------------------
+# Generic:
+#
+OPT = -O
+FLIB = -llapack
+F77 = f77
+
+# -----------------------------------------------------------------------------
+# Sun:
+#
+# OPT= -e -fast -w
+# FLIB =
+# F77 = f77
+
+# -----------------------------------------------------------------------------
+# Linux absoft:
+#    -f    fold variables to lower case
+#    -C    array bounds checking
+#    -O    moderate optimization
+#    -s    static allocation
+#    -g    include symbol table info
+#    -N26  read big-endian binary files (needed for coefficient files)
+#    -N3   use embedded record lengths in binary files
+#    -N109 fold variables to upper case
+# Note: Absoft requires the U77 library for command line arguments
+OPT = -N109 -s -N3 -N26 -C -O
+FLIB = -L/usr/local/absoft/lib -llapack -lblas
+F77 = /usr/local/absoft/bin/f77
+
+# -----------------------------------------------------------------------------
+# SGI:
+#    -O       turn on default optimization (same as -O2)
+#    -O0      turn off all optimization
+#    -static
+#    -check_bounds
+#OPT= -static -O0 -check_bounds
+#FLIB= -lcomplib.sgimath
+#F77 = f77
+
+###############################################################################
+
+
+MAIN= useconv.o
+
+MAIN_NOCON= useconv_nocon.o
+
+OBJS= urad.o rdref.o
+
+build: $(OBJS) $(MAIN) $(MAIN_NOCON)
+	f77 $(OBJS) $(MAIN) -o ../Bin/useconv
+	f77 $(OBJS) $(MAIN_NOCON) -o ../Bin/useconv_nocon
+
+.f.o:
+	f77 -c $(OPT) $*.f
+
+all: $(OBJS) $(MAIN) $(MAIN_NOCON)
+
+$(OBJS): farray.f
+
+clean :
+	rm -f $(OBJS) $(MAIN) $(MAIN_NOCON)

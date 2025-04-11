@@ -1,0 +1,25 @@
+
+the following maxes were in the header file.
+
+The C/Fortran API uses these to can be used to set the profile vdata
+record sizes, they don't really need to be saved explicitly in the
+header.  These fields could just be set to the MAX<blah> values, but
+that could waste a lot of space, at least for MAXLEV vs mlevs
+
+Size fields:
+
+ mrho      max num of refl pts    scalar int32   [0,MAXRHO]
+ memis     max num of emis pts    scalar int32   [0,MAXEMIS]
+ mlevs     max number of levels   scalar int32   [0,MAXLEV]
+
+ mwmemis   max MW emis pts	  scalar int32	 MWMAXEMIS
+ mwmstb    max MW sTb pts	  scalar int32	 MWMAXSTB
+
+
+the header should only have size fields for arrays that are
+in the header, currently 
+
+ - ngas, for glist and gunit;
+ - nchan, for vchan and ichan, and
+ - mwnchan, for mwfchan
+

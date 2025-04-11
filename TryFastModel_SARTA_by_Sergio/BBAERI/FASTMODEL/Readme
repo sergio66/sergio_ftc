@@ -1,0 +1,78 @@
+GENERIC
+=======
+-rw-r--r-- 1 sergio pi_strow 3889 Apr 24 12:43 sarta_fastmodel_uplook.m
+-rw-r--r-- 1 sergio pi_strow 3834 Apr 24 12:06 orig_sarta_fastmodel2.m   ** DOWNLOOOK **
+-rw-r--r-- 1 sergio pi_strow 3349 Apr 15 20:43 radtrans.m
+-rw-r--r-- 1 sergio pi_strow 6739 Apr  2 07:15 radtransupX.m
+
+49 PROFILES, gaussian SRF
+=========================
+-rw-r--r-- 1 sergio pi_strow  467 Apr  1 16:57 make_regr48.m
+-rw-r--r-- 1 sergio pi_strow 2638 Apr  1 17:39 make_kcarta_ods.m
+-rw-r--r-- 1 sergio pi_strow 4578 Apr 25 08:14 sarta_fastmodel_uplook49.m
+make_regr48        -- makes an output op.rtp, but using 
+                      /asl/packages/klayers/Bin/klayers_aeri1013
+make_kcarta_ods.m  -- uses the above rtp file to make WV,CO2,O3,Others mono ODs
+sarta_fastmodel_uplook49 -- uses these OD to make F,FW,FWO convolved eff transmittances
+                            and stores them in 
+                  fout = ['CONV_trans/prof_' num2str(ip) '_band_' num2str(B) '.mat'];
+
+-rw-r--r-- 1 sergio pi_strow 4382 Apr 25 16:05 find_predictors_uplook49_605.m
+-rw-r--r-- 1 sergio pi_strow 2307 Apr 25 15:22 quickcheck_odpredictors_radtrans605.m
+-rw-r--r-- 1 sergio pi_strow 4210 Apr 25 15:19 find_predictors_uplook49_500.m
+-rw-r--r-- 1 sergio pi_strow 2298 Apr 25 14:12 quickcheck_odpredictors_radtrans500.m
+-rw-r--r-- 1 sergio pi_strow  645 Apr 25 11:33 optimize_predictor1.m
+find_predictors_uplook49_500         uses the F,FW,FWO to make predictors for 500 cm-1 band
+optimize_predictor1                  is used : constant, liniear in WV,O3,T,
+quickcheck_odpredictors_radtrans500  does quick RT to see how good these predictors are
+find_predictors_uplook49_605         uses the F,FW,FWO to make predictors for 605 cm-1 band
+optimize_predictor1                  is used : constant, liniear in WV,O3,T,
+quickcheck_odpredictors_radtrans605  does quick RT to see how good these predictors are
+
+-rw-r--r-- 1 sergio pi_strow 4210 Apr 25 15:19 find_predictors_uplook49_500v2.m
+-rw-r--r-- 1 sergio pi_strow 2298 Apr 25 14:12 quickcheck_odpredictors_radtrans500v2.m
+-rw-r--r-- 1 sergio pi_strow  645 Apr 25 11:33 optimize_predictor2.m
+More robust version ie more predictors rather thn just const/linear terms
+
+Toffsets = 11
+==============
+-rw-r--r-- 1 sergio pi_strow  540 Apr 25 18:37 make_regr_usstd_11offsets.m
+-rw-r--r-- 1 sergio pi_strow 2707 Apr 26 08:14 make_kcarta_ods_usstd_11offsets.m
+-rw-r--r-- 1 sergio pi_strow 4637 Apr 25 18:51 sarta_fastmodel_uplook11.m
+-rw-r--r-- 1 sergio pi_strow 3959 Apr 26 08:17 skarta_uplook_ussutd11_500_wv.m
+
+Same as before : 
+make_regr_usstd_11offsets.m    makes the 11 US std reg profiles, with 11 Toffsets 
+                               -50,-40,...,+40,+50
+make_kcarta_ods_usstd_11offsets.m  makes the mono WV,CO2,O3,OTHERS ods
+sarta_fastmodel_uplook11.m         convolves space2gnd transmittances for F,FW,FWO
+skarta_uplook_ussutd11_500_wv.m    puts them into arrays and does RT
+
+
+Toffsets = 11, wv = 0.1 0.3 0.5 etc
+===================================
+-rw-r--r-- 1 sergio pi_strow  701 Apr 26 08:08 make_regr_usstd_11offsets_wv.m
+-rw-r--r-- 1 sergio pi_strow 3053 Apr 26 08:15 make_kcarta_ods_usstd_11offsets_wv.m
+-rw-r--r-- 1 sergio pi_strow 4637 Apr 25 18:51 sarta_fastmodel_uplook11_wv.m
+-rw-r--r-- 1 sergio pi_strow 3880 Apr 26 04:26 skarta_uplook_ussutd11_500_wv.m
+
+as above but with WV mults
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+49 PROFILES, AERI SRF
+=========================
+-rw-r--r-- 1 sergio pi_strow  467 Apr  1 16:57 make_regr48.m
+-rw-r--r-- 1 sergio pi_strow 2638 Apr  1 17:39 make_kcarta_ods.m
+
+-rw-r--r-- 1 sergio pi_strow 4578 Apr 25 08:14 sarta_fastmodel_uplook49_aeriSRF.m
+make_regr48        -- makes an output op.rtp, but using 
+                      /asl/packages/klayers/Bin/klayers_aeri1013
+make_kcarta_ods.m  -- uses the above rtp file to make WV,CO2,O3,Others mono ODs
+sarta_fastmodel_uplook49_aeriSRF -- uses these OD to make F,FW,FWO convolved eff 
+                           transmittances and stores them in 
+                  fout = ['CONV_trans/aeriSRF_prof_' num2str(ip) '_band_' num2str(B) '.mat'];
+
+-rw-r--r-- 1 sergio pi_strow 4210 Apr 25 15:19 find_predictors_uplook49_605v3.m
+-rw-r--r-- 1 sergio pi_strow 2298 Apr 25 14:12 quickcheck_odpredictors_radtrans605v3.m
+More robust version ie more predictors rather thn just const/linear terms, uses AERI SRFs
+

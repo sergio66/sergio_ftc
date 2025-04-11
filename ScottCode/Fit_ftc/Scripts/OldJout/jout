@@ -1,0 +1,9 @@
+Enter the name of the file with the water con coefs
+Enter name of text file for output radiance
+Enter name of text file for output transmittances
+Enter the name of the reference profile
+Enter name of file to read
+Gas IDs for the sets 1-4 are:    2   3   1  -2
+Enter set number of trans/gas to use : 
+Enter the bottom layer number (1=top)
+Enter bottom temp and emissivity (-1 for default)

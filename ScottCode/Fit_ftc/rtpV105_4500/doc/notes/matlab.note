@@ -1,0 +1,18 @@
+
+\subsection{Size Fields}
+
+The Fortran/C API header size fields are used on a write to set the
+field size.
+
+The matlab writer will use actual field size in the structure array,
+if no explicit field size variable is present, but the matlab reader
+just takes in whatever it finds, so a write/read cycle will always
+leave explicit size fields in the read data
+
+The matlab reader should probably shrink fields down to the explicit
+size variables, when these are present; if no size field is present,
+the actual field size should probably be used
+
+Rule for interpreting RTP size fields: if a size field is present,
+use it; otherwise assume the size is the actual HDF field size.  
+

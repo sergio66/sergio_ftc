@@ -1,0 +1,5 @@
+/home/tangborn/git/Nnet/
+
+I was able to run ftc_fixed_nnet. and I ran diag_fixed,
+need to change
+load_fcris_hr    to    load /home/strow/Matlab/Cris/Data/freq_cris_hr.mat

@@ -1,0 +1,7 @@
+runtherm130 short > jout130_short
+runtherm140 short > jout140_short
+runtherm150 short > jout150_short
+
+runtherm130 long > jout130_long
+runtherm140 long > jout140_long
+runtherm150 long > jout150_long

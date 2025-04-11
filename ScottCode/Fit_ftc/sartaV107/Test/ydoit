@@ -1,0 +1,6 @@
+../Bin/sarta_m140_y fin=reg_set567_365750co2_op.rtp fout=yrad567_m140_365750.rtp
+../Bin/sarta_m140_y fin=reg_set567_375375co2_op.rtp fout=yrad567_m140_375375.rtp
+../Bin/sarta_m140_y fin=reg_set567_385000co2_op.rtp fout=yrad567_m140_385000.rtp
+../Bin/sarta_m140_y fin=reg_set567_394625co2_op.rtp fout=yrad567_m140_394625.rtp
+../Bin/sarta_m140_y fin=reg_set567_404250co2_op.rtp fout=yrad567_m140_404250.rtp
+../Bin/sarta_m140_y fin=reg_set567_413875co2_op.rtp fout=yrad567_m140_413875.rtp

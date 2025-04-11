@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <title>CS229: Machine Learning - Projects</title>
+
+  <!-- bootstrap -->
+  <!-- <link rel="stylesheet" href="./style/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style/bootstrap-theme.min.css">
+  <link href="./style/newstyle.css" rel="stylesheet" type="text/css">
+    <style type="text/css">
+    h3,
+    h4 {
+      color: #000;
+    }
+    h3 { margin-bottom: 0.6em; }
+    td.td-label {
+      font-weight: bold;
+      text-align: right;
+    }
+    h4 {font-size: 14pt; margin-bottom: 0.7em; }
+    #prev-proj-table td {
+      padding: 0.5em;
+    }
+    #prev-proj-table td:hover {
+      background-color: #eee;
+    }
+    </style>
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-dark">
+      <a href="http://cs229.stanford.edu/">
+      <img src="./static/seal-dark-red.png" style="height:40px; float: left; margin-left: 20px; margin-right: 20px;"></a>
+      <a class="navbar-brand" href="http://cs229.stanford.edu/">CS229</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="./index.html#announcement">Announcements</a></li>
+          <li class="nav-item"><a class="nav-link" href="./syllabus.html">Syllabus</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#info">Course Info</a></li>
+          <li class="nav-item"><a class="nav-link" href="./index.html#logistics">Logistics</a></li>
+          <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="https://piazza.com/class/jkbylqx4kcp1h3">Piazza</a></li>
+        </ul>
+      </div>
+    </nav>
+
+  <div class="container" style="margin-top: 2em">
+
+    <h2>CS229 Final Project Information</h2>
+
+            <p class="lead">One of CS229&#39;s main goals is to prepare you to apply machine learning algorithms to real-world tasks,
+            or to leave you well-qualified to start machine learning or AI research.
+            The final project is intended to start you in these directions.</p>
+
+      <p>For group-specific questions regarding projects, please create
+      a private post on Piazza<!--, or email <a href="cs229-qa@cs.stanford.edu">cs229-qa@cs.stanford.edu</a>-->.
+      Please first have a look through the <a href="#faq">frequently asked questions</a>.
+      <br> <u>Note</u>: only one group member is supposed to submit the assignment, and tag the rest of the group members (do not all submit separately, or on the flip side forget to tag your teammates if you are the group's designated submitter).  If you do not do this, you can submit a regrade request and we will fix it, but we will also deduct 1 point.
+      </p>
+
+      <h3>Previous projects</h3>
+
+      <div class="text-center">
+      <table id="prev-proj-table" class="table-bordered" style="margin:0px auto; min-width: 500px;">
+        <tr>
+          <td><a href="proj2018">2018</a></td>
+          <td><a href="proj2017">2017</a></td>
+          <td><a href="projects2016.html">2016</a></td>
+          <td><a href="projects2016spr.html">2016 (Spring)</a></td>
+          <td><a href="projects2015.html">2015</a></td>
+          <td><a href="projects2014.html">2014</a></td>
+        </tr>
+        <tr>
+          <td><a href="projects2013.html">2013</a></td>
+          <td><a href="projects2012.html">2012</a></td>
+          <td><a href="projects2011.html">2011</a></td>
+          <td><a href="projects2010.html">2010</a></td>
+          <td><a href="projects2009.html">2009</a></td>
+        </tr>
+        <tr>
+          <td><a href="projects2008.html">2008</a></td>
+          <td><a href="projects2007.html">2007</a></td>
+          <td><a href="projects2006.html">2006</a></td>
+          <td><a href="projects2005.html">2005</a></td>
+          <td><a href="projects2004.html">2004</a></td>
+        </tr>
+      </table>
+      </div>
+
+            <h3>Project Topics</h3>
+            <p>Your first task is to pick a project topic. If you&#39;re looking for project ideas, please come to project office hours, and we&#39;d be happy to brainstorm and suggest some project ideas. In the meantime, here are some <a href="https://docs.google.com/document/d/1g6oq7vAjloMAW_8ywGpzL6yoMZ8fs6zuB4gbWaj-MR8/">suggestions</a> that might also help.</p>
+            <!-- <p style="text-align:center; color: #999;">[Suggestions for project ideas will be posted soon.]</p> -->
+
+            <p>Most students do one of three kinds of projects:
+            <ol start="1" style="margin-top: -0.8em; margin-bottom: 0.2em;">
+                <li><strong>Application project</strong>. This is by far the most common: Pick an application that interests you, and explore how best to apply learning algorithms to solve it.</li>
+                <li><strong>Algorithmic project</strong>. Pick a problem or family of problems, and develop a new learning algorithm, or a novel variant of an existing algorithm, to solve it.</li>
+                <li><strong>Theoretical project</strong>. Prove some interesting/non-trivial properties of a new or an existing learning algorithm. (This is often quite difficult, and so very few, if any, projects will be purely theoretical.)</li>
+            </ol>
+            Some projects will also combine elements of applications, algorithms and theory.</p>
+
+            <p>Many fantastic class projects come from students picking either an application area that they&#39;re interested in, or picking some subfield of machine learning that they want to explore more. So, pick something that you can get excited and passionate about! Be brave rather than timid, and do feel free to propose ambitious things that you&#39;re excited about. (Just be sure to ask us for help if you&#39;re uncertain how to best get started.)
+            Alternatively, if you&#39;re already working on a research or industry project that machine learning might apply to, then you may already have a great project idea.</p>
+            <p>A very good CS229 project will be a publishable or nearly-publishable piece of work. Each year, some number of students continue working on their projects after completing CS229, submitting their work to a conferences or journals. Thus, for inspiration, you might also look at some&nbsp;recent machine learning research papers. Two of the main machine learning conferences are ICML and NIPS. You can find papers from recent ICML conferences online: <a href="https://www.google.com/url?q=https://2017.icml.cc/Conferences/2017/Schedule&amp;sa=D&amp;ust=1507334628895000&amp;usg=AFQjCNG4LB-6-JqHZA4RYgR32_GC9sILLA">https://2017.icml.cc/Conferences/2017/Schedule</a>. All NIPS papers are online, at <a href="https://www.google.com/url?q=http://books.nips.cc/&amp;sa=D&amp;ust=1507334628895000&amp;usg=AFQjCNHriwDq3MR6uuVPvnOylIDViZ7Biw">http://books.nips.cc/</a>. Finally, looking at class projects from previous years is a good way to get ideas.</p>
+            <p>Once you have identified a topic of interest, it can be useful to look up existing research on relevant topics by searching related keywords on an academic search engine such as: <a href="https://www.google.com/url?q=http://scholar.google.com/&amp;sa=D&amp;ust=1507334628896000&amp;usg=AFQjCNFWyWHMR3z5lxXXIt6hDiY6edS0DQ">http://scholar.google.com</a>.
+            Another important aspect of designing your project is to identify one or several datasets&nbsp;suitable for your topic of interest. If that data needs considerable pre-processing &nbsp;to suit your task, or that you intend to collect the needed data yourself, keep in mind that this is only one part of the expected project work, but can often take considerable time. We still expect a solid methodology and discussion of results, so pace your project accordingly.</p>
+
+            <p>Notes on a few specific types of projects:
+            <ul style="font-size: 10pt">
+            <li><strong>Deep learning projects</strong>: Since CS229 discusses many other concepts besides deep learning, we ask that if you decide to work on a deep learning project, please make sure that you use other material you learned in the class as well. For example, you might set up logistic regression and SVM baselines, or do some data analysis using the unsupervised methods covered in class. We may grade these projects using different criteria to make sure that grading is fair for students who have not had exposure to DL before. Finally, training deep learning models can be very time consuming, so make sure you have the necessary compute.
+              <!--Unfortunately, we will not be providing compute in this course, although both <a href="https://cloud.google.com/edu/">Google Cloud</a> and <a href="https://azure.microsoft.com/en-us/community/education/">Microsoft Azure</a> offer free academic units.-->
+            </li>
+            <li><strong>Preprocessed datasets</strong>: While we don't want you to have to spend much time collecting raw data, the process of inspecting and visualizing the data, trying out different types of preprocessing, and doing error analysis is often an important part of machine learning. Hence if you choose to use preprepared datasets (e.g. from Kaggle, the UCI machine learning repository, etc.) we encourage you to do some data exploration and analysis to get familiar with the problem.</li>
+            <li><strong>Replicating results</strong>: Replicating the results in a paper can be a good way to learn. However, we ask that instead of just replicating a paper, also try using the technique on another application, or do some analysis of how each component of the model contributes to final performance.</li>
+            </ul></p>
+
+            <h3>Project Parts: Proposal, Milestone, Poster, &amp; Final Report</h3>
+
+            <p>This section contains the detailed instructions for the different parts of your project.</p>
+            <p><strong>Submission</strong>: We&rsquo;ll be using Gradescope for submission of all four parts of the final project. We&rsquo;ll announce when submissions are open for each part.
+            You should submit on Gradescope <strong>as a group</strong>: that is, for each part, please make one submission for your entire project group and tag your team members.
+            </p>
+
+            <h4>Evaluation</h4>
+
+            <p>We will not be disclosing the breakdown of the 40% that the final project is worth amongst the different parts, but the poster and final report will combine to be the majority of the grade. Projects will be evaluated based on:
+            <ul>
+                <li>The technical quality of the work. (I.e., Does the technical material make sense? Are the things tried reasonable? Are the proposed algorithms or applications clever and interesting? Do the authors convey novel insight about the problem and/or algorithms?)</li>
+                <li>Significance. (Did the authors choose an interesting or a &ldquo;real&quot; problem to work on, or only a small &ldquo;toy&quot; problem? Is this work likely to be useful and/or have impact?)</li>
+                <li>The novelty of the work. (Is this project applying a common technique to a well-studied problem, or is the problem or method relatively unexplored?)</li>
+            </ul>
+            In order to highlight these components, it is important you present a solid discussion regarding the learnings from the development of your method, and summarizing how your work compares to existing approaches.
+            </p>
+
+            <h4>Project Proposals</h4>
+
+            <p>In the project proposal, you'll pick a project idea to work on early and receive feedback from the TAs.
+            If your proposed project will be done jointly with a different class&#39; project, you should obtain approval from the other instructor and approval from us. &nbsp;Please come to the project office hours to discuss with us if you would like to do a joint project.</p>
+
+            <p>In the proposal, below your project title, include the&nbsp;project category. The category can be one of:
+            <table class="table" style="margin: 0; padding:0; border: none;"><tr><td style="border:none; padding:0;">
+            <ul>
+                <li>Athletics &amp; Sensing Devices</li>
+                <li>Audio &amp; Music</li>
+                <li>Computer Vision</li>
+                <li>Finance &amp; Commerce</li>
+                <li>General Machine Learning</li>
+            <ul>
+            </td><td style="border:none; padding:0;">
+            <ul>
+                <li>Life Sciences</li>
+                <li>Natural Language</li>
+                <li>Physical Sciences</li>
+                <li>Theory &amp; Reinforcement Learning</li>
+            </ul></td>
+            </tr></table>
+            (If you feel a category is missing, please let us know.) To get a better idea of the different categories, check out this link: <a href="https://www.google.com/url?q=http://cs229.stanford.edu/projects2016.html&amp;sa=D&amp;ust=1507334628901000&amp;usg=AFQjCNFyc82FEsjhGo9KgC9IJyiNo7KbQg">http://cs229.stanford.edu/projects2016.html</a>.</p>
+            <table class="table">
+              <tr><td class="td-label">Project mentors</td><td>Based off of the topic you choose in your proposal, we&rsquo;ll suggest a project mentor given the areas of expertise of the TAs. This is just a recommendation; feel free to speak with other TAs as well.</td></tr>
+              <tr><td class="td-label">Format</td><td>
+                  <p>Your proposal should be a PDF document, giving the title of the project, the project category, the full names of all of your team members, the SUNet ID of your team members, and a 300-500 word description of what you plan to do.</p>
+                  Your project proposal should include the following information:
+                  <ul style="margin-bottom:0;">
+                  <li>Motivation: What problem are you tackling? Is this an application or a theoretical result?</li>
+                  <li>Method: What machine learning techniques are you planning to apply or improve upon?</li>
+                  <li>Intended experiments: What experiments are you planning to run? How do you plan to evaluate your machine learning algorithm?</li>
+                  </ul>
+
+                  Presenting pointers to one relevant dataset and one example of prior research on the topic are a valuable (optional) addition.
+                </td></tr>
+              <tr><td class="td-label">Grading</td><td>The project proposal is mainly intended to make sure you decide on a project topic and get feedback from TAs early. As long as your proposal follows the instructions above and the project seems to have been thought out with a reasonable plan, you should do well on the proposal.</td></tr>
+            </table>
+
+            <h4>Milestone</h4>
+
+            <p>The milestone will help you make sure you&#39;re on track, and should describe what you&#39;ve accomplished so far, and very briefly say what else you plan to do. You should write it as if it&#39;s an &ldquo;early draft&quot; of what will turn into your final project. You can write it as if you&#39;re writing the first few pages of your final project report, so that you can re-use most of the milestone text in your final report. Please write the milestone (and final report) keeping in mind that the intended audience is Profs. Dror and Ng and the TAs. Thus, for example, you should not spend two pages explaining what logistic regression is. Your milestone should include the full names of all your team members and state the full title of your project. <strong>Note</strong>: We will expect your final writeup to be on the same topic as your milestone.</p>
+            <table class="table">
+                <tr><td class="td-label">Contributions</td><td>Please include a section that describes what each team member worked on and contributed to the project. This is to make sure team members are carrying a fair share of the work for projects. If you have any concerns working with one of your project teammates, please fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLSdvl_e7uJ5KkPEqzLwJi0JCfk81a5hSvvQudPaGQ-2Bm3b1cg/viewform">optional teammate evaluation form</a> (only seen by the teaching staff).</td></tr>
+                <tr><td class="td-label">Grading</td><td>The milestone is mostly intended to get feedback from TAs to make sure you&rsquo;re making reasonable progress. As long as your milestone follows the instructions above and you seem to have tested any assumptions which might prevent your team from completing the project, you should do well on the milestone.</td></tr>
+                <tr><td class="td-label">Format</td><td>
+                    Your milestone should be at most 3 pages, excluding references. Similar to to the proposal, it should include
+                    <ul style="margin-bottom:0;">
+                      <li>Motivation: What problem are you tackling, and what's the setting you're considering?</li>
+                      <li>Method: What machine learning techniques have you tried and why?</li>
+                      <li>Preliminary experiments: Describe the experiments that you've run, the outcomes, and any error analysis that you've done. You should have tried at least one baseline.</li>
+                      <li>Next steps: Given your preliminary results, what are the next steps that you're considering?</li>
+                    </ul>
+                </td></tr>
+            </table>
+
+            <!-- TODO Create teammate evaluation form. -->
+            <h4>Poster Presentations</h4>
+            <p>The class projects will be presented at a poster presentation<!-- on 12/12-->. Each team should prepare a poster, and be prepared to give a very short explanation (3 minutes), in front of the poster, about their work. At the poster session, you&#39;ll also have an opportunity to see what everyone else did for their projects. We will supply poster-boards and easels for displaying the posters. You will also need to submit your poster as a PDF the day before the presentation.</p>
+            <!-- TODO post poster suggestions. Update website. -->
+
+            <table class="table">
+              <tr><td style="text-align:right"><strong>Format</strong></td><td>Here are some <a href="poster-guidelines.pdf">poster guidelines</a> (please note that 36x24in means 36in wide by 24in tall, i.e. it's better if your poster is formatted landscape). You can also look at posters from previous years. <strong>Note</strong>: Despite example given in guidelines, posters with nice, illustrative figures are preferred over posters with lots of text.</td></tr>
+              <tr><td style="text-align:right"><strong>Grading</strong></td><td>We will be grading posters on the poster quality and clarity, the technical content of the poster, as well as the knowledge demonstrated by the team when discussing their work with teaching staff at the poster session.</td></tr>
+            </table>
+
+            <p>There will be <b>no late days</b> for the poster submission.</p>
+
+            <h4>Final Writeup</h4>
+
+            <p>Because the teaching staff will have only a few hours to see a large number of posters at the poster session, we&#39;ll only be able to get an overview of the work you did at the session. We know that most students work very hard on the final projects, and so we are extremely careful to give each writeup ample attention, and read and try very hard to understand everything you describe in it.</p>
+            <p>After the class, we will also post all the final writeups online so that you can read about each other's work. If you do not want your write-up to be posted online, then please create a private Piazza post <!--or contact us at cs229-qa@cs.stanford.edu&nbsp;-->at least a week in advance of the final submission deadline.</p>
+            <!--TODO Post guidelines (not a rubric).-->
+
+            <table class="table">
+              <tr><td class="td-label">Format</td><td>
+                  <p>Final project writeups can be at most 5 pages long (including appendices and figures). We will allow for extra pages containing only references. If you did this work in collaboration with someone else, or if someone else (such as another professor) had advised you on this work, your write-up must fully acknowledge their contributions.  For shared projects, we also require that you submit the final report from the class you're sharing the project with. </li>
+                  </p>
+                  Here's more detailed guidelines with a rough outline of what we expect to see in the final report: <a href="final-report-guidelines.pdf">final-report-guidelines.pdf</a>.</td></tr>
+              <tr><td class="td-label">Contributions</td><td>Please include a section that describes what each team member worked on and contributed to the project. If you have any concerns working with one of your project teammates, you can also fill out this <a href="https://docs.google.com/forms/d/e/1FAIpQLScT3vYpf-YGGHVp9kTKSsk4GXVVCm_40kuWTIHAkg5tzWO6SQ/viewform">optional teammate evaluation form</a> (only seen by the teaching staff). We may reach out and factor in contributions and evaluations when assigning project grades.</td></tr>
+              <tr><td class="td-label">Code</td><td>Please include a zip file or preferably a link to a Github repository with the code for your final project. You do not have to include the data or additional libraries (so if you submit a zip file, it should not exceed 5MB). <!--If you have a private repository, please add the <a href="https://github.com/cs229staff">CS229 staff account</a> as a collaborator.--></td></tr>
+              <!--<tr><td class="td-label">Teammate evaluations</td><td>Along with the final writeup submission, teammates will have the option of submitting teammate evaluations (only seen by teaching staff). This is optional and should be used to alert teaching staff if project partners have not helped with a fair share of the project or similar issues. We will factor evaluations into account when assigning project grades.</td></tr>-->
+              <tr><td class="td-label">Grading</td><td>The final report will be judged based off of the clarity of the report, the relevance of the project to topics taught in CS229, the novelty of the problem, and the technical quality and significance of the work.</td></tr>
+            </table>
+
+            <p>There will be <b>no late days</b> for the final report.</p>
+
+            <h3>After CS229</h3>
+            <p>After CS229, if you want to submit your work to a machine learning conference, the ICML deadline will probably be in early February next year (<a href="https://www.google.com/url?q=http://icml.cc&amp;sa=D&amp;ust=1507334628910000&amp;usg=AFQjCNGR4BbE--yAL5BWsTmPiQMw_DXHdg">http://icml.cc</a>), and the NIPS deadline is usually in early June (<a href="https://www.google.com/url?q=http://nips.cc/&amp;sa=D&amp;ust=1507334628910000&amp;usg=AFQjCNHJblJQ7yUAmWKoYTVzxievYG8Few">http://nips.cc/</a>). Of course, depending on the topic of your project, other non-machine learning conferences may also be more appropriate.</p>
+            <p></p>
+
+    <h3 id="faq">Project FAQs</h3>
+
+    <dl>
+
+<dt>What are the deliverables as part of the term project?</dt>
+<dd>
+The project has four deliverables:
+<ol style="list-style-type: lower-alpha; margin-top: 0; padding-top: 0;">
+  <li>Proposal</li>
+  <li>Milestone</li>
+  <li>Poster</li>
+  <li>Final report</li>
+</ol>
+<p>Please refer to the course schedule page for information about deadlines. We will post more details about each each on the website and on Piazza.</p>
+</dd>
+
+<dt>Should final project use only methods taught in classroom?</dt>
+<dd>
+<p>No, we don't restrict you to only use methods/topics/problems taught in class. That said, you can always consult a Project TA you are unsure about any method or problem statement.</p>
+</dd>
+
+<dt> Is it okay to use a dataset that is not public ?</dt>
+<dd>
+<p>We don't mind you using a dataset that is not public, as long as you have the required permissions to use it. We don't require you to share the dataset either as long as you can accurately describe it in the Final Report.</p>
+</dd>
+
+<dt>Is it okay to combine the CS229 term project with that of another class ?</dt>
+<dd>
+In general it is possible to combine your project for CS229 and another class, but with the following caveats:
+<ol style="list-style-type:lower-alpha">
+  <li> You should make sure that you follow all the guidelines and requirements for the CS229 project (in addition to the requirements of the other class). So, if you'd like to combine your CS229 project with a class X but class X's policies don't allow for it, you cannot do it.</li>
+  <li> You cannot turn in an identical project for both classes, but you can share common infrastructure/code base/datasets across the two classes.</li>
+  <li> Clearly indicate in your milestone and final report, which part of the project is done for CS229 and which part is done for a class other than CS229.
+       For shared projects, we also require that you submit the final report from the class you're sharing the project with.</li>
+</ol>
+</dd>
+
+<dt>Do all team members need to be enrolled in CS229?</dt>
+<dd>
+<p>No, but please explicitly state the work which was done by team members enrolled in CS229 in your milestone and final report. This extends to projects that were done in collaboration with research groups as well.</p>
+</dd>
+
+<dt>What are acceptable team sizes and how does grading differ as a function of the team size ?</dt>
+<dd>
+<p>
+We recommend teams of 3 students, while teams sizes of 1 or 2 are also acceptable. The team size will be taken under consideration when evaluating the scope of the project in breadth and depth, meaning that a three-person team is expected to accomplish more than a one-person team would.</p>
+<p>The reason we encourage students to form teams of 3 is that, in our experience, this size usually fits best the expectations for the CS229 projects. In particular, we expect the team to submit a completed project (even for team of 1 or 2), so keep in mind that all projects require to spend a decent minimum effort towards gathering data, and setting up the infrastructure to reach some form of result. In a three-person team this can be shared much better, allowing the team to focus a lot more on the interesting stuff, e.g. results and discussion.</p>
+<p>In exceptional cases, we can allow a team of 4 people. If you plan to work on a project in a team of 4, please come talk to one of the Project TAs beforehand so we can ensure that the project has a large enough scope.</p>
+</dd>
+<dt>Do I have to be on campus to submit the final report?</dt>
+<dd>
+<p>No, the final report will be submitted via Gradescope.</p>
+</dd>
+<dt>How do SCPD students submit the poster?</dt>
+<dd>
+<p>As an SCPD student you have the choice to either (1) attend the poster session or (2) submit on Gradescope the poster PDF and a link to a 3-minute recording of your presentation (done as if in person).</p>
+</dd>
+<dt>Is it okay for non-SCPD students to miss the poster session?</dt>
+<dd>
+Part of your project grade part depends on your presentation at the poster session, so we really urge you not to miss it. That said, if (and only if) you have a final exam conflict there are a few possibilities:
+<ol style="list-style-type:lower-alpha">
+  <li>If your other class offers an alternative time for the exam, you should choose that.</li>
+  <li>If you are working on the project as a team, the rest of the team could present the poster without you there.</li>
+  <li>If none of above options work for you, come talk to one of the Project TAs or post a message on Piazza<!--send us an email at <a href="cs229-qa@cs.stanford.edu">cs229-qa@cs.stanford.edu</a>-->.</li>
+</ol>
+</dd>
+<dt>What fraction of the final grade is the project?</dt>
+<dd><p>The term project is 40% of the final grade.</p></dd>
+</dl>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </body>
+
+  </div>
+</html>

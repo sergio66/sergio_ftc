@@ -1,0 +1,473 @@
+<html>
+<head>
+<title>Advanced Methods for Data Analysis</title>
+<link rel=StyleSheet href="style.css" type="text/css" media=screen>
+</head>
+
+<body>
+<a name="top"></a>
+<h1>Advanced Methods for Data Analysis: Spring 2014</h1>
+<h2>Statistics 36-402/36-608</h2>
+
+<table style="width: 100%;"><tr>
+<td>
+<bold>Instructor:</bold>
+Ryan Tibshirani
+(ryantibs at cmu dot edu)<br>
+
+<br>
+<bold>TAs:</bold><br>
+Jisu Kim (jisuk1 at andrew dot cmu edu)<br>
+Robert Lunde (rlunde at andrew dot cmu dot edu)<br>
+Sonia Todorova (sktodoro at andrew dot cmu dot edu)<br>
+
+<br>
+<bold>Lecture times:</bold>
+Tuesdays and Thursdays 10:30-11:50am, Wean 7500<br>
+
+<br>
+<bold>Office hours:</bold><br>
+RT: Wednesdays 3-4pm, Baker 229B<br>
+RL: Thursdays 3:30-4:30pm, Porter 117<br>
+ST: Mondays 3:30-4:30pm, Porter A20<br>
+
+<br>
+<bold>Course syllabus:</bold>
+<a href="syllabus.pdf">PDF</a>
+</td>
+    
+<td style="width: 50%; height: 400px;
+background-image: url('200.jpg');
+background-size: 400px 400px;
+background-position: center top;
+background-repeat: no-repeat; opacity: 0.5;"></td>
+</tr></table>
+
+<br>
+<hr id="dash">
+Go to: &nbsp;
+<a href="#lectures">Lectures</a> |
+<a href="#assignments">Assignments</a> |
+<a href="#schedule">Schedule</a>
+<br>
+
+<hr id="dash">
+<a name="lectures"></a>
+<h2>Lecture notes</h2>
+
+<ol>
+<li>Introduction and regression
+<ul>
+<li><a href="notes/intro.pdf">Lecture notes</a>
+<li><a href="shalizi/ch01.pdf">Shalizi Chapter 1</a>
+<li>R files: <a href="rfiles/intro.R">intro.R</a>,
+<a href="rfiles/nonlin.Rdata">nonlin.Rdata</a>
+</ul>
+<br>
+
+<li>Introduction and regression (cont'd)
+<ul>
+<li> (Same materials as previous lecture)
+</ul>
+<br>
+
+<li>The truth about linear regression
+<ul>
+<li><a href="notes/truthreg.pdf">Lecture notes</a>
+<li><a href="shalizi/ch02.pdf">Shalizi Chapter 2</a>
+<li>R files: <a href="rfiles/ch02.R">ch02.R</a>
+  (from Shalizi Chapter 2) 
+</ul>
+<br>
+
+<li>Error and validation
+<ul>
+<li><a href="notes/errval.pdf">Lecture notes</a>
+<li><a href="shalizi/ch03.pdf">Shalizi Chapter 3</a>
+<li>R files: <a href="rfiles/ch03.R">ch03.R</a>
+  (from Shalizi Chapter 3) 
+</ul>
+<br>
+
+<li>Error and validation (cont'd)
+<ul>
+<li> (Same materials as previous lecture)
+<li> + R files: <a href="rfiles/errval.R">errval.R</a>
+</ul>
+<br>
+
+<li>Kernel regression
+<ul>
+<li><a href="notes/kernel.pdf">Lecture notes</a>
+<li><a href="shalizi/ch04.pdf">Shalizi Chapter 4</a>
+</ul>
+<br>
+
+<li>The bootstrap
+<ul>
+<li><a href="notes/bootstrap.pdf">Lecture notes</a>
+<li><a href="shalizi/ch06.pdf">Shalizi Chapter 6</a>
+<li>R files: <a href="rfiles/bootstrap.R">bootstrap.R</a>
+</ul>
+<br>
+
+<li>The bootstrap (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Degrees of freedom
+<ul>
+<li><a href="notes/df.pdf">Lecture notes</a>
+<li>R files: <a href="rfiles/df.R">df.R</a>
+</ul>
+<br>
+
+<li>Degrees of freedom (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Smoothing splines
+<ul>
+<li><a href="notes/smoothspline.pdf">Lecture notes</a>
+<li><a href="shalizi/ch08.pdf">Shalizi Chapter 8</a>
+<li>R files: <a href="rfiles/smoothspline.R">smoothspline.R</a>
+</ul>
+<br>
+
+<li>Smoothing splines (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Additive models
+<ul>
+<li><a href="notes/addmodels.pdf">Lecture notes</a>
+<li><a href="shalizi/ch09.pdf">Shalizi Chapter 9</a>
+<li>R files: <a href="rfiles/addmodels.R">addmodels.R</a>
+</ul>
+<br>
+
+<li>Catch up / review
+<ul>
+<li>(No notes)
+</ul>
+<br>
+
+<li>Inference with linear smoothers
+<ul>
+<li><a href="notes/linsmooth.pdf">Lecture notes</a>
+<li>R files: <a href="rfiles/linsmooth.R">linsmooth.R</a>
+</ul>
+<br>
+
+<li>Inference with linear smoothers (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Logistic regression
+<ul>
+<li><a href="notes/logreg.pdf">Lecture notes</a>
+<li><a href="shalizi/ch12.pdf">Shalizi Chapter 12</a>
+<li>R files: <a href="rfiles/logreg.R">logreg.R</a>
+</ul>
+<br>
+
+<li>Generalized linear models
+<ul>
+<li><a href="notes/glm.pdf">Lecture notes</a>
+<li><a href="shalizi/ch13.pdf">Shalizi Chapter 13</a>
+<li>R files: <a href="rfiles/glm.R">glm.R</a>
+</ul>
+<br>
+
+<li>Generalized linear models (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Principal components analysis
+<ul>
+<li><a href="notes/pca.pdf">Lecture notes</a>
+<li><a href="shalizi/ch17.pdf">Shalizi Chapter 17</a>
+<li>R files: <a href="rfiles/pca.R">pca.R</a>,
+<a href="rfiles/playerstats.Rdata">playerstats.Rdata</a> 
+</ul>
+<br>
+
+<li>Principal components analysis (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Other dimension reduction techniques
+<ul>
+<li><a href="notes/otherdr.pdf">Lecture notes</a>
+</ul>
+<br>
+
+<li>Clustering
+<ul>
+<li><a href="notes/clustering.pdf">Lecture notes</a>
+<li>R files: <a href="rfiles/clustering.R">clustering.R</a>,
+<a href="rfiles/kclust.R">kclust.R</a>
+</ul>
+<br>
+
+<li>Clustering (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>Clustering (cont'd)
+<ul>
+<li>(Same materials as previous lecture)
+</ul>
+<br>
+
+<li>High-dimensional regression
+<ul>
+<li><a href="notes/highdim.pdf">Lecture notes</a>
+</ul>
+<br>
+
+<li>High-dimensional regression (cont'd)
+<ul>
+<li> (Same materials as previous lecture)
+<li> + R files: <a href="rfiles/highdim.R">highdim.R</a>,
+  <a href="rfiles/bvsim.R">bvsim.R</a>
+</ul>
+</ol>
+
+<a href="#top">Top</a>
+
+<hr id="dash">
+<a name="assignments"></a>
+<h2>Assignments</h2>
+
+<ul>
+<li>
+<a href="homeworks/homework01.pdf">Homework 1</a>,
+  due Thurs Jan 23<br> 
+R files: <a href="homeworks/nonlin.Rdata">nonlin.Rdata</a>
+<br>
+<br>
+
+<li>
+<a href="homeworks/homework02.pdf">Homework 2</a>, due Tues Feb 4<br>
+R files: <a href="homeworks/penn-table.csv">penn-table.csv</a>,
+  <a href="homeworks/cv_bws_npreg.R">cv_bws_npreg.R</a>
+<br>
+<br>
+
+<li>
+<a href="homeworks/homework03.pdf">Homework 3</a>, due Thurs Feb 13<br>
+R files: <a href="homeworks/abalone.csv">abalone.csv</a>
+<br>
+<br>
+
+<li>
+<a href="homeworks/homework04.pdf">Homework 4</a>, due Tues Feb 25<br>
+R files: <a href="homeworks/abalone.csv">abalone.csv</a>
+<br>
+<br>
+
+<li>
+<a href="exams/midterm1.pdf">Midterm exam 1 (take-home)</a>, due Thurs Mar 6<br>
+R files: check your email
+<br>
+<br>
+
+<li>
+<a href="homeworks/homework05.pdf">Homework 5</a>, due Thurs Mar 20<br>
+R files: <a href="homeworks/abalone.csv">abalone.csv</a>
+<br><br>
+
+<li>
+<a href="homeworks/homework06.pdf">Homework 6</a>, due Tues Apr 1<br>
+R files: <a href="homeworks/n88_pol.csv">n88_pol.csv</a>
+<br><br>
+
+<li>
+<a href="homeworks/homework07.pdf">Homework 7</a>, due Tues Apr 8
+<br><br>
+
+<li>
+<a href="homeworks/homework08.pdf">Homework 8</a>, due Tues Apr 22<br>
+R files: <a href="homeworks/digits.Rdata">digits.Rdata</a>,
+  <a href="homeworks/plot.digit.R">plot.digit.R</a>
+<br><br>
+
+<li>
+<a href="homeworks/homework09.pdf">Homework 9</a>, due Thurs May 1<br>
+R files: <a href="homeworks/hitters.Rdata">hitters.Rdata</a>,
+<br><br>
+
+<li>
+<a href="exams/final.pdf">Final exam (take-home)</a>, due Thurs May
+8<br>
+R files: check your email
+</ul>
+<a href="#top">Top</a>
+
+<hr id="dash">
+<a name="schedule"></a>
+<h2>Schedule</h2>
+
+Here is the planned class schedule. It is subject to change, depending on
+time and class interests. 
+
+<br><br>
+<table id="bord" style="width: 100%;">
+<tr id="bord">
+<td id="bord" style="width: 15%;">Tues Jan 14</td>
+<td id="bord" style="width: 50%;">1. Introduction and regression</td>
+<td id="bord" style="width: 35%;"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Jan 16</td>
+<td id="bord">2. Introduction and regression (cont'd)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Jan 21</td>
+<td id="bord">3. The truth about linear regression</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Jan 23</td>
+<td id="bord">4. Error and validation</td>
+<td id="bord">Homework 1 due</td></tr>
+<tr id="bord">
+<td id="bord">Tues Jan 28</td>
+<td id="bord">5. Error and validation (cont'd)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Jan 30</td>
+<td id="bord">6. Kernel regression</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Feb 4</td>
+<td id="bord">7. The bootstrap</td>
+<td id="bord">Homework 2 due</td></tr>
+<tr id="bord">
+<td id="bord">Thurs Feb 6</td>
+<td id="bord">8. The boostrap (cont'd)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Feb 11</td>
+<td id="bord">9. Degrees of freedom</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Feb 13</td>
+<td id="bord">10. Degrees of freedom (cont'd)</td>
+<td id="bord">Homework 3 due</td></tr>
+<tr id="bord">
+<td id="bord">Tues Feb 18</td>
+<td id="bord">11. Smoothing splines</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Feb 20</td>
+<td id="bord">12. Smoothing splines</td>
+<!--Parametric vs nonparametric-->
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Feb 25</td>
+<td id="bord">13. Additive models</td>
+<td id="bord">Homework 4 due</td></tr>
+<tr id="bord">
+<td id="bord">Thurs Feb 27</td>
+<td id="bord">14. Catch up / review</td>
+<!--Performance measures and multiple testing-->
+<td id="bord">Take-home exam out</td></tr>
+<tr id="bord">
+<td id="bord">Tues Mar 4</td>
+<td id="bord">15. Inference with linear smoothers</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Mar 6</td>
+<td id="bord">16. Inference with linear smoothers (cont'd)</td>
+<td id="bord">Take-home exam due</td></tr>
+<tr id="bord">
+<td id="bord">Tues Mar 11</td>
+<td id="bord">(Spring break, no class)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Mar 13</td>
+<td id="bord">(Spring break, no class)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Mar 18</td>
+<td id="bord">17. Logistic regression</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Mar 20</td>
+<td id="bord">18. Generalized linear models</td>
+<!--Density estimation-->
+<td id="bord">Homework 5 due</td></tr>
+<tr id="bord">
+<td id="bord">Tues Mar 25</td>
+<td id="bord">19. Generalized linear models (cont'd)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Mar 27</td>
+<td id="bord">20. Principal components analysis</td>
+<td id="bord"</td></tr>
+<tr id="bord">
+<td id="bord">Tues Apr 1</td>
+<td id="bord">21. Principal components analysis (cont'd)</td>
+<td id="bord">Homework 6 due</td></tr>
+<tr id="bord">
+<td id="bord">Thurs Apr 3</td>
+<td id="bord">22. Other dimension reduction techniques</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Apr 8</td>
+<td id="bord">23. In-class exam</td>
+<td id="bord">Homework 7 due; in-class exam</td></tr>
+<tr id="bord">
+<td id="bord">Thurs Apr 10</td>
+<td id="bord">(Spring carnival, no class)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Apr 15</td>
+<td id="bord">24. Clustering</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs Apr 17</td>
+<td id="bord">25. Clustering (cont'd)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Apr 22</td>
+<td id="bord">26. Clustering (cont'd)</td>
+<td id="bord">Homework 8 due</td></tr>
+<tr id="bord">
+<td id="bord">Thurs Apr 24</td>
+<td id="bord">27. High-dimensional statistics</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Tues Apr 29</td>
+<td id="bord">28. High-dimensional statistics (cont'd)</td>
+<td id="bord"></td></tr>
+<tr id="bord">
+<td id="bord">Thurs May 1 </td>
+<td id="bord">29. High-dimensional statistics (cont'd)</td>
+<td id="bord">Homework 9 due; take-home final out</td></tr>
+<tr id="bord">
+<td id="bord">Thurs May 8</td>
+<td id="bord"></td>
+<td id="bord">Take-home final due</td></tr>
+</table>
+
+<br>
+<a href="#top">Top</a>
+
+</body>
+</html>
+

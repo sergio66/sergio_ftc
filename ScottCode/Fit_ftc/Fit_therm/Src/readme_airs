@@ -1,0 +1,50 @@
+README file for the AIRS fast model reflected downwelling thermal regression
+used for the "v5" (aka "sarta_dec05" sartaV1.07) fast model.
+
+Scott Hannon, 03 December 2007
+
+Comment: I am unsure of the reasons for the use of two different
+"rdown2" files and why the "long" data is a year older than the
+"short" data.  The following is a vague recollection and might
+be wrong: the shortwave wcon tuning is older (ie not modified as
+recently) than the longwave tuning and was available in kcarta
+while the longwave tuning was not.  The SARTA calculated "rdown2"
+needs to be consistent with the kcarta transmittance and radiance
+calculations, but accuracy is much less important than consistency
+for these regression.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The AIRS SARTA database "therm6.dat" coefficient file with the v5
+AIRS fast model is identical to
+
+ 100 -rw-r--r--  1 hannon users   95120 2005-04-19 14:33 rta_coef6_therm.dat
+
+This file was generated with script
+
+  4 -rw-r--r--  1 hannon users   2482 2005-04-19 14:33 xwrt_therm.m
+
+which reads matlab files
+
+1180 -rw-r--r--  1 hannon users 1202546 2005-04-08 16:48 therm_fcoef6_short.mat
+4468 -rw-r--r--  1 hannon users 4561791 2005-04-07 17:01 therm_fcoef6_long.mat
+
+These matlab files were generated with script
+
+  8 -rw-r--r--  1 hannon users   7168 2005-04-07 16:28 xfitthermband2.m
+
+and data files
+
+12844 -rw-r--r--  1 hannon users 13130440 2004-01-05 12:44 thermdata_long.mat
+ 3320 -rw-r--r--  1 hannon users  3393057 2005-04-08 16:03 thermdata_short.mat
+
+The "long" file used 
+
+ 2672 -rw-r--r--  1 hannon users  2731060 2005-04-07 16:58 rdown2_notuning.mat
+
+while the "short" file used
+
+ 2672 -rw-r--r--  1 hannon users  2731196 2005-04-08 16:47 rdown2_wcontuningonly.mat
+
+%%% end of file %%%

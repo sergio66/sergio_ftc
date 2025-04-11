@@ -1,0 +1,179 @@
+
+                    RTP C and Fortran Tools
+                    -----------------------
+
+                            V1.05
+
+                          H. Motteler
+                           18 Mar 02
+
+
+Introduction
+-------------
+
+This package contains procedures to read and write RTP (Radiative
+Transfer Profile) format files from C and Fortran.  See rtpspec.pdf
+in the "doc" directory for more info on the RTP format and on the
+Fortran and C programming interface.  Matlab RTP tools are included
+in the "h4tools" directory; which has its own documentation.
+
+
+Building the Distribution
+--------------------------
+
+To build the RTP package you need to have HDF 4 installed; this
+is available from NCSA, at http://hdf.ncsa.uiuc.edu .  RTP has
+been tested on Linux, SGI, and Sun systems, with HDF4.1r3, r4,
+and r5; 64 bit IRIX may require r4 or r5.
+
+To build the RTP library and utilities, untar the distribution
+and edit the top level Makefile to set HDFHOME to the local HDF4
+installation.  You may also need to change some of the compiler
+parameters.  Then type "make"; the top level makefile will enter
+each of the subdirectories src, test, and utils.
+
+The makefile in the src directory will build the RTP library,
+librtp.a and install it in the "lib" directory and installs the
+"include" files rtp.h, pvdefs.h, and rtpdefs.f into the include
+directory.  If you want to edit thse include files (for example
+to change some parameters) be sure to edit the version in the src
+directory, and be careful to keep rtpdefs.f in agreement with the
+C header files.
+
+
+Reading and Writing RTP Data
+-----------------------------
+
+The Fortran API consists of four routines: rtpopen.f, rtpread.f,
+rtpwrite.f, and rtpclose.f; a brief description of parameters and
+actions is given at the beginning of each file, and in rtpspec.pdf.
+Fields are defined in rtpspec.pdf, and in rtp.h.
+
+To use the RTP routines, C and Fortran programs need to link to
+librtp.a, Fortran application programs need to include rtpdefs.f,
+and C application need to include rtp.h.
+
+The Fortran API uses static structures for header and profiles,
+that include all the RTP fields.  Normally, only a subset of the
+fields will be used, and the field size variables in the header
+are used to determine what is actually read from or written to a
+file.
+
+The field set in the HDF file and the field set defined for the
+Fortran structures do not have to match exactly, or be in the same
+order.  On reads, unknown fields are ignored.  On writes, values
+in the header (nrho, nemis, ngas, mlevs, nchan, and pfields) are
+used to determine which fields are to be written; if a size is
+zero, or if a field group is not specified with pfields, the
+corresponding field or fields are left out of the file.
+
+
+RTP Utilities
+--------------
+
+rtpdump is a basic dump tool for examining RTP files; it will print
+out field sets, attributes, and header and profile data.
+
+  USAGE
+
+     rtpdump [-achp] [-n <k>] rtpfile
+
+  OPTIONS
+
+     -a      dump attributes
+     -c      dump RTP channel info
+     -h      dump header structure
+     -p      dump profile structure
+     -n <k>  select profile <k> for channel or profile 
+           structure dumps; the first profile is 1
+
+  BUGS
+
+     the output is from debug and error dump routines and is not very
+     fancy; the -p option only prints a subset of profile fields
+
+There is also a simple "rtpsize" utility, that prints out structure
+sizes and does some basic checks that the header and profile fields
+match the field name and size list (the "flists").
+
+
+HDF Utilities
+--------------
+
+RTP data is currently saved in the HDF 4 Vdata format, and can be
+accessed and manipulated directly with HDF utilities.  For example,
+
+    hdp dumpvd -h -c "RTP data" test1.hdf
+
+will list the field set actually in the HDF Vdata file test1.hdf.
+The utility "hdp" is part of the HDF 4 distribution.  "hdp dumpvd"
+will give a short list of vdata dump options.  See the documentation
+with the HDF distribution for more information.
+
+
+RTP Files
+----------
+
+RTP Fortran interface
+
+  rtpdefs.f     -- Fortran RTP structure definitions
+
+  rtpopen.c     -- Fortran interface to open RTP files
+  rtpread.c     -- Fortran interface to read an RTP profile
+  rtpwrite.c    -- Fortran interface to write an RTP profile
+  rtpclose.c    -- Fortran interface to close an RTP open channel
+  rtpvers.c     -- Fortran interface to return the RTP version
+
+  ftest1.f      -- Fortran read and write demo
+  ftest2.f      -- Fortran read and write demo
+
+RTP C interface
+
+  rtp.h         -- RTP header and profile structures
+  rtpfnx.h      -- RTP function prototypes 
+
+  rtpread1.c    -- RTP read setup
+  rtpread2.c    -- read HDF vdata into struct buffer
+  rtpwrite1.c   -- RTP write setup
+  rtpwrite2.c   -- write structure buffer to HDF vdata
+  rtpclose1.c   -- detach and close
+  gsplit.c      -- expand gamnt to a gas_<n> sublist
+  getchan.c     -- find next free RTP channel
+  rtphcheck     -- sanity check for RTP header values
+
+  rtptest1.c    -- test RTP write new and read back in
+  rtptest2.c    -- test RTP read existing, modify, and write
+
+low level vdata routines
+
+  pvfunc.h      -- pv ("profile vdata") function prototypes
+  pvdefs.h      -- parameters and structures for reading HDF vdatas
+
+  pvopen.c      -- open an HDF vdata file, start the VS interface
+  pvread1.c     -- read vdata attributes, setup to read vdata data
+  pvread2.c     -- read an HDF vdata, after the pvread1 setup
+  pvread3.c     -- wrapper for VSdetach
+  pvwrite1.c    -- vdata write setup
+  pvwrite2.c    -- write an HDF vdata
+  pvwrite3.c    -- detatch the vdata
+  pvclose.c     -- stop the V interface and close the vdata file
+  pvmatch.c     -- match vdata buffer to structure fields
+
+  pvtest.c      -- test pvread and pvwrite family of functions
+
+misc utilities
+
+  dump_hstr.c   -- dump the header structure 
+  dump_pstr.c   -- dump the profile structure
+  dump_flist.c  -- dump an RTP field list
+  dump_chan.c   -- dump info on an open RTP channel 
+  dump_attrs.c  -- dump an RTP attribute list
+  dump_vbuf.c   -- dump a vdata buffer
+
+  rtpdump.c     -- basic RTP dump utility
+  rtpsize.c     -- check and print out structure sizes
+
+data files
+
+  test4.hdf     -- 48 fitting profiles, used in some of the tests
+

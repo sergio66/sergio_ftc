@@ -1,0 +1,8 @@
+runtrans130 fmw > jout130_fmw
+runtrans140 fmw > jout140_fmw
+runtrans150 fmw > jout150_fmw
+
+runtrans130 fcow > jout130_fcow
+runtrans140 fcow > jout140_fcow
+runtrans150 fcow > jout150_fcow
+

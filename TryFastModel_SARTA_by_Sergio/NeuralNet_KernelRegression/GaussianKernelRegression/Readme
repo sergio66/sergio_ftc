@@ -1,0 +1,45 @@
+https://www.mathworks.com/matlabcentral/fileexchange/19564-local-linear-kernel-regression    local linear kernel regression
+This is the local linear version of the kernel smoothing regression function:
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+https://www.mathworks.com/matlabcentral/fileexchange/19195-kernel-smoothing-regression?requestedDomain=true  kernel smoothing regression
+
+Non-parametric regression is widely used in many scientific and
+engineering areas, such as image processing and pattern recognition.
+
+Non-parametric regression is about to estimate the conditional
+expectation of a random variable:
+
+E(Y|X) = f(X)
+
+where f is a non-parametric function.
+
+Based on the kernel density estimation technique, this code implements
+the so called Nadaraya-Watson kernel regression algorithm particularly
+using the Gaussian kernel. The default bandwidth of the regression is
+derived from the optimal bendwidth of the Gaussian kernel density
+estimation suggested in the literature. The code can also take care of
+missing data.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+https://www.mathworks.com/matlabcentral/fileexchange/19279-multivariant-kernel-regression-and-smoothing
+
+Multivariant Kernel Regression and Smoothing
+version 1.0 (118 KB) by Yi Cao
+
+A multivariant Gaussian kernel regression and smoothing tool.
+
+This function implements multivariant Gaussian kernel regression and
+smoothing. A few examples show how it can be used to smooth 3-d noisy
+images with missing data.
+
+For tutorial purpose, the function is implemented in the simplest
+form. Therefore, it is particularly suitable for beginners to learn
+kernel regression.
+
+The efficiency is improved in the updated version by searching
+neighbours in the effective range.
+

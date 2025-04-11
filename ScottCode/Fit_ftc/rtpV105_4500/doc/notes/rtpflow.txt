@@ -1,0 +1,49 @@
+
+main steps for a write, with required predecessors
+
+  1. build header and profile vdata and struct flists from 
+     header structure values and static structure fields
+     (lots of special cases, from header structure values).
+     write open channel info
+
+  with pvwrite1:
+  2. open vdata
+  3. attach to header and profile vdatas, 2
+  4. write attributes, 2,3
+  5. set profile and header field info for vdata, 1-4
+
+  6. copy data to header and profile vdata buffers, 1-5
+
+  with pvwrite2:
+  7. write header and profile data, 1-5
+
+  with pvwrite3:
+  8. detach, 1-7
+
+  with pvclose:
+  9. close, 1-8
+
+
+main steps for a read, with required predecessors
+
+  with pvread1:
+  1. open vdata
+  2. attach to header and profile vdatas, 1
+  3. read attributes 1,2
+  4. read header and profile field info, 1,2
+
+  5. build header and profile vdata and struct flists from
+     read vdata fields an static structure fields, 1,2,4
+     write open channel info
+
+  with pvread2:
+  6. read header and profile data, 1,2,4,5
+
+  7. copy data from header and profile vdata buffers, 1,2,4-6
+
+  with pvread3:
+  8. detach, 1-7
+
+  with pvclose:
+  9. close, 1-8
+

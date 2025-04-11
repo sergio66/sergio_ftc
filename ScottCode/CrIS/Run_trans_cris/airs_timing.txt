@@ -1,0 +1,24 @@
+Measured and estimated timings for the AIRS transmittances runs
+---------------------------------------------------------------
+The runs are for convolved transmittances for 48 profiles
+using our FOW(P), FMW, and FCOW(p) breakout gases.  Type
+FOW(p) is done for all channels, so we should not need to
+do any separate production runs for Roger Saunders et al.
+
+The run times do not include the reflected thermal runs, but
+those are relatively short.
+
+18 April 2002:
+Took 18 hours to run "fmw" on taro/yam.
+
+14 May 2002:
+Estimate 32 hours to run "fcow" on taro.
+
+15 May 2002:
+Took a total of 76 hours (8 x 9.5h) for "fow_short" on airs9-16
+
+16 May 2002:
+Estimate 120 hours to run "fow_long" on taro/yam.
+
+The runs can be done quicker by spreading the runs to multiple
+processors, each doing a sub-set of the 48 profiles.

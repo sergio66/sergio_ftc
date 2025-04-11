@@ -1,0 +1,182 @@
+ $nm_params
+ namecomment	=  '******* PARAMS section *******'
+ !Paths/mixed paths output is to be layer-to-space optical depth
+ KLayer2Sp = 1
+ !water continuum MT_CKD (con1)
+ KCKD = 4
+ !short header
+ kLongOrShort = -1
+ $end
+
+ $nm_frqncy
+ namecomment	=  '******* FRQNCY section *******'
+ rf1	        =  680.0
+ rf2    	= 1555.0
+ $end
+
+ $nm_molgas
+ namecomment	=  '******* MOLGAS section *******'
+ !use all gases in MOLGAS
+ iNGas	=            -1
+ $end
+
+ $nm_xscgas
+ namecomment	=  '******* XSCGAS section *******'
+ !use all gases in XSCGAS
+ iNxsec	=             -1
+ $end
+
+ $nm_prfile
+ namecomment	=  '******* PRFILE section *******'
+ caPfname	=  '../Prof_fow/fow_regXPROFX.op'
+ $end
+
+ $nm_weight
+ namecomment	=  '******* WEIGHT section *******'
+ !this is to test radiances
+ iNpmix	=             1
+ caaMixFileLines	= 
+    !all gases have weight 1.0
+    '1   -1    1.0    -1'
+ $end
+
+ $nm_radnce
+ namecomment	=  '******* RADNCE section *******'
+ !number of atmospheres
+ iNatm          =  6
+
+ ! Atmos #1: no solar, no thermal
+ iaMPSetForRad(1)   =  1
+ raPressStart(1)    =  1013.9476
+ raPressStop(1)     =  000.0
+ raTSpace(1)        =   2.960000
+ raTSurf(1)         =  XTSURFX
+ raSatAngle(1)      =  00.0000
+ raSatHeight(1)     =   -1.000000
+ iakSolar(1)        =  -1
+ rakSolarAngle(1)   =  0.0000000E+00
+ rakSolarRefl(1)    =  -1.0
+ iakThermal(1)      =  -1
+ rakThermalAngle(1) =  -1.000000
+ iakThermalJacob(1) =   1
+ caEmissivity(1)    =   'dummyfilename'
+ raSetEmissivity(1) =  0.975
+
+ ! Atmos #2: no solar, no thermal
+ iaMPSetForRad(2)   =  1
+ raPressStart(2)    =  1013.9476
+ raPressStop(2)     =  000.0
+ raTSpace(2)        =   2.960000
+ raTSurf(2)         =  XTSURFX
+ raSatAngle(2)      =  32.8244
+ raSatHeight(2)     =   -1.000000
+ iakSolar(2)        =  -1
+ rakSolarAngle(2)   =  0.0000000E+00
+ rakSolarRefl(2)    =  -1.0
+ iakThermal(2)      =  -1
+ rakThermalAngle(2) =  -1.000000
+ iakThermalJacob(2) =   1
+ caEmissivity(2)    =   'dummyfilename'
+ raSetEmissivity(2) =  0.975
+
+ ! Atmos #3: no solar, no thermal
+ iaMPSetForRad(3)   =  1
+ raPressStart(3)    =  1013.9476
+ raPressStop(3)     =  000.0
+ raTSpace(3)        =   2.960000
+ raTSurf(3)         =  XTSURFX
+ raSatAngle(3)      =  44.8285
+ raSatHeight(3)     =   -1.000000
+ iakSolar(3)        =  -1
+ rakSolarAngle(3)   =  0.0000000E+00
+ rakSolarRefl(3)    =  -1.0
+ iakThermal(3)      =  -1
+ rakThermalAngle(3) =  -1.000000
+ iakThermalJacob(3) =   1
+ caEmissivity(3)    =   'dummyfilename'
+ raSetEmissivity(3) =  0.975
+
+ ! Atmos #4: no solar, no thermal
+ iaMPSetForRad(4)   =  1
+ raPressStart(4)    =  1013.9476
+ raPressStop(4)     =  000.0
+ raTSpace(4)        =   2.960000
+ raTSurf(4)         =  XTSURFX
+ raSatAngle(4)      =  53.4704
+ raSatHeight(4)     =   -1.000000
+ iakSolar(4)        =  -1
+ rakSolarAngle(4)   =  0.0000000E+00
+ rakSolarRefl(4)    =  -1.0
+ iakThermal(4)      =  -1
+ rakThermalAngle(4) =  -1.000000
+ iakThermalJacob(4) =   1
+ caEmissivity(4)    =   'dummyfilename'
+ raSetEmissivity(4) =  0.975
+
+ ! Atmos #5: no solar, no thermal
+ iaMPSetForRad(5)   =  1
+ raPressStart(5)    =  1013.9476
+ raPressStop(5)     =  000.0
+ raTSpace(5)        =   2.960000
+ raTSurf(5)         =  XTSURFX
+ raSatAngle(5)      =  59.8336
+ raSatHeight(5)     =   -1.000000
+ iakSolar(5)        =  -1
+ rakSolarAngle(5)   =  0.0000000E+00
+ rakSolarRefl(5)    =  -1.0
+ iakThermal(5)      =  -1
+ rakThermalAngle(5) =  -1.000000
+ iakThermalJacob(5) =   1
+ caEmissivity(5)    =   'dummyfilename'
+ raSetEmissivity(5) =  0.975
+
+ ! Atmos #6: no solar, no thermal
+ iaMPSetForRad(6)   =  1
+ raPressStart(6)    =  1013.9476
+ raPressStop(6)     =  000.0
+ raTSpace(6)        =   2.960000
+ raTSurf(6)         =  XTSURFX
+ raSatAngle(6)      =  65.0428
+ raSatHeight(6)     =   -1.000000
+ iakSolar(6)        =  -1
+ rakSolarAngle(6)   =  0.0000000E+00
+ rakSolarRefl(6)    =  -1.0
+ iakThermal(6)      =  -1
+ rakThermalAngle(6) =  -1.000000
+ iakThermalJacob(6) =   1
+ caEmissivity(6)    =   'dummyfilename'
+ raSetEmissivity(6) =  0.975
+ $end
+
+ $nm_jacobn
+ namecomment	=  '******* JACOBN section *******'
+ !no jacobians
+ iJacob	=             0
+ $end
+
+ $nm_spectr
+ namecomment	=  '******* SPECTRA section ******'
+ !no external spectra
+ iNumNewGases	=             -1
+ $end
+
+ $nm_scattr
+ namecomment	=  '******* SCATTR section *******'
+ !no scattering
+ iNclouds	  =             -1
+ $end
+
+ $nm_output
+ namecomment	=  '******* OUTPUT section *******'
+ caComment      = 'data for reflected thermal fit'
+ !dump out radiance at TOA
+ iaPrinter(1)   =    3
+ iaGPMPAtm(1)   =   -1
+ iaNp(1)        =    1
+ raaOp(1,1)     =    0.0
+
+ $end
+
+ $nm_endinp
+ namecomment	=  '******* ENDINP section *******'
+ $end

@@ -1,0 +1,6 @@
+The MODIS reflected downwelling atmospheric thermal emission term
+was generated using "modisfitthermband.m" and "modiswrt_therm.m".
+Note that it uses an algorithm similar to the old AIRS v4 fast
+model (in particular note that no "rdown" is used in the regression).
+
+Scott Hannon, 03 December 2007.

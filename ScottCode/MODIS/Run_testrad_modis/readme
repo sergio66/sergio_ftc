@@ -1,0 +1,3 @@
+Create convolved monochromatic radiances which can be compared to
+radiances calculated from the convolved layer-to-space transmittance
+used for the MODIS fast model production.

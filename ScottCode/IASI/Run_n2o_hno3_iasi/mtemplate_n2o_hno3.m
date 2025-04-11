@@ -1,0 +1,175 @@
+% MATLAB script to convolve N2O & HNO3 fast model layer-to-space
+% transmittance data
+% This version is for the December 2007 IASI fast model production.
+%
+% Basic outline of this script:
+%    Run readkc3 to read in KCARTA data and create temporary output file
+%    Read in the header of the temporary file
+%    Read in all layer-to-space optical depths
+%    Convert N2O from layer-to-space od to layer od
+%    Convert HNO3 from layer-to-space od to layer od
+%       Loop over angles
+%          Convert nadir optical depth to transmittance for current angle
+%          Convolve using fconvkc
+%       End loop on angles
+%    End loop on sets
+%    Save convolved trans
+%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The dummy X strings below should be replaced with the appropriate values
+outname='XMOUTNAMEX';
+koutname='XKOUTNAMEX';
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+disp(' ')
+disp('Starting to process data ------------------------------------------')
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The variables below should be set by hand
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%
+% N2O multiplier - should match value in kCARTA namelist
+n2o_mult = 0.75;
+
+%%%%%%%
+% HNO3 multiplier - should match value in kCARTA namelist
+hno3_mult = 2.0;
+
+
+%%%%%%%
+% nlay: Number of layers (per set of mixed paths)
+nlay = 100;
+
+
+%%%%%%%
+% secang: Angle secants (without sun)
+secang = [1.000  1.190  1.410  1.680  1.990  2.370];
+
+
+%%%%%%%
+% secang_sun: Extra angle secants for shortwave
+secang_sun = [2.840  3.470  4.300  5.420  6.940  9.020];
+
+
+%%%%%%%
+% tempfile: Name of the temporary file to be created by readkc3
+tempfile = 'xxx.dat';
+
+%%%%%%%
+cfirst = 1;
+clast  = 8461;
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The code below should not need modifying
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Channel numbers
+ichan = (cfirst:clast)'; %'
+iconv = ichan + 160;
+nchan = length(ichan);
+clear cfirst clast
+
+% Include sun angles
+secang = [secang, secang_sun];
+nang = length(secang);
+clear secang_sun
+
+% Read in the kcarta output file and create a temporary output file
+disp(' ')
+disp(['Unchunking kcarta file ' koutname ' and creating temp file ' tempfile]);
+readkc3(koutname,tempfile)
+clear koutname
+
+% Open and read in the header of the temporary file
+disp(' ')
+disp('Starting to processing data from temp file');
+fid = fopen(tempfile,'r'); % Note: assumed written in native format
+npts = fread(fid,1,'integer*4');
+ncol = fread(fid,1,'integer*4');
+clear tempfile
+
+% Read freq points
+wnums = fread(fid,[npts,1],'real*8');
+
+
+% Determine number of sets
+nsets = ncol/nlay;
+ijunk = mod(ncol,nlay);
+if (ijunk ~= 0)
+   ncol, nlay
+   error('inappropriate value of ncol or nlay')
+end
+clear ijunk
+if (nsets ~=3 )
+   error(['Unexpected number of sets; expecting 3, found ' int2str(nsets)])
+end
+
+
+% Add path for fftconv
+addpath /asl/matlab/fftconv
+
+
+% Read mono layer-to-space optical depths
+%
+% Read in nominal tauz (large array)
+% set1=all gases weight=1 (except 1=0 & 3=0)
+zodtot = fread(fid,[npts,nlay],'real*4');
+%
+% Read in tauz with perturbed N2O (large array)
+% set2=all gases weight=1 (except 1=0 & 3=0) & 4=n2o_mult
+zodtot4 = fread(fid,[npts,nlay],'real*4');
+%
+% Read in tauz with perturbed HNO3 (large array)
+% set3=all gases weight=1 (except 1=0 & 3=0) & 12=hno3_mult
+zodtot12 = fread(fid,[npts,nlay],'real*4');
+
+
+% Declare convolved trans arrays
+ctall  = zeros(nchan,nlay*nang);
+ctall4 = zeros(nchan,nlay*nang);
+ctall12 = zeros(nchan,nlay*nang);
+
+
+% Loop over angles
+indang = 0:nang:round(nang*nlay - nang);  % indices for 1st angle
+for iang = 1:nang
+   disp(['doing angle number ' int2str(iang)])
+   %
+   % Do all gases
+   trans = exp(-zodtot*secang(iang));  % (large array)
+   [rout, fout] = fconvkc(trans, 'iasi', 'gauss');
+   ctall(:,indang+iang) = rout(iconv,:);
+   %
+   % Do all gases with scaled N2O
+   trans = exp(-zodtot4*secang(iang));  % (large array)
+   [rout, fout] = fconvkc(trans, 'iasi', 'gauss');
+   ctall4(:,indang+iang) = rout(iconv,:);
+   %
+   % Do all gases with scaled HNO3
+   trans = exp(-zodtot12*secang(iang));  % (large array)
+   [rout, fout] = fconvkc(trans, 'iasi', 'gauss');
+   ctall12(:,indang+iang) = rout(iconv,:);
+end % loop over angles
+%
+fchan = fout(iconv)'; %'
+clear iang indang npts ncol od trans rout fout wnums iconv
+
+
+% Close temporary file
+fclose(fid);
+clear fid
+
+
+% Save the results
+disp(' ')
+disp(['Saving convolved data to file ' outname]);
+eval(['save ' outname ' ctall ctall4 ctall12 fchan ichan' ...
+   ' secang nang nlay nchan n2o_mult hno3_mult'])
+
+disp(' ')
+disp('Finished processing data, quitting matlab')
+exit

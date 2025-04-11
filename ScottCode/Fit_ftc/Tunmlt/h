@@ -1,0 +1,8 @@
+% AIRS coefficient tuning file, Scott Hannon <hannon@umbc.edu>
+% AIRS RTA "m130" April 2008
+% Created: 22 Apr 2008, Scott Hanon - ozone tuning ones; all other
+%    tuning from interpolation of "dec05deliv"
+%
+% Note: channels with ID > 2378 are fake channels
+%  ID  freq    fixed   w lines w con   ozone    CO      CH4    nonLTE
+%---- -------- ------- ------- ------- ------- ------- ------- -------

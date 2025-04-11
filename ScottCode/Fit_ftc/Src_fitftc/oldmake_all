@@ -1,0 +1,163 @@
+###############################################################################
+# Compiler info: edit as needed
+###############
+# OPT : compiler options
+# FLIB : fortran libraries (needs LAPACK)
+# F77 : fortran compiler
+
+# -----------------------------------------------------------------------------
+# Generic:
+#
+# OPT = -O
+# FLIB = -llapack
+# F77 = f77
+
+# -----------------------------------------------------------------------------
+# Sun:
+#
+# OPT= -e -fast -w
+# FLIB =
+# F77 = f77
+
+# -----------------------------------------------------------------------------
+# Linux absoft:
+#    -f    fold variables to lower case
+#    -C    array bounds checking
+#    -O    moderate optimization
+#    -s    static allocation
+#    -g    include symbol table info
+#    -N26  read big-endian binary files (needed for coefficient files)
+#    -N3   use embedded record lengths in binary files
+#    -N109 fold variables to upper case
+#    -B108 append underscore to subroutine & function names; needed
+#        for use with lapack (S.Hannon, 18 December 2007)
+# Note: Absoft requires the U77 library for command line arguments
+# Do not use -O option; optimizer bug breaks the NaN trap in keff.f
+#OPT = -N109 -s -N3 -N26 -C
+OPT = -f -s -N3 -N26 -C -B108
+FLIB = -L/usr/local/absoft/lib -llapack -lblas
+F77 = /usr/local/absoft/bin/f77
+
+# -----------------------------------------------------------------------------
+# SGI:
+#    -O       turn on default optimization (same as -O2)
+#    -O0      turn off all optimization
+#    -static
+#    -check_bounds
+#OPT= -static -O0 -check_bounds
+#FLIB= -lcomplib.sgimath
+#F77 = f77
+
+
+###############################################################################
+# Object files
+##############
+
+# fit set 1: FWO
+OBJS_set1=fitftc_fwo.o \
+   fitf_f8.o  fitw_fwo.o  fito_fwo.o  calprd_fwo.o \
+   opconv.o  prep.o  rdchan.o  rdref.o  sort.o  wght2a.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit set 2: FOW
+OBJS_set2=fitftc_fwo.o \
+   fitf_f8.o  fito_fow.o  fitw_fow.o  calprd_fow.o \
+   opconv.o  prep.o  rdchan.o  rdref.o  sort.o  wght2a.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit set 3: FMW
+OBJS_set3=fitftc_fmw.o \
+   calprd_fmw.o  fitf_f8.o  fitm_fmw.o  fitw_fmw.o \
+   opconv.o  prep.o  rdchan.o  wght2a.o  sort.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o  rdref.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit set 4: FCOW
+OBJS_set4=fitftc_fcow.o \
+   fitf_fcow.o  fitc_fcow.o  fito_fcow.o  fitw_fcow.o  calprd_fcow.o \
+   opconv.o  prep.o  rdchan.o  rdref.o  sort.o  wght2a.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit set 5: bFsW
+OBJS_set5=fitftc_fwo.o \
+   calprd_bfsw.o  fitf_fwo_bf11.o  fitw_fwo_sw3.o  fito_fwo_so1.o \
+   opconv.o  prep.o  rdchan.o  wght2a.o  sort.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o  rdref.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit set 6: mFmW
+OBJS_set6=fitftc_fwo.o \
+   calprd_mfmw.o  fitf_fwo_mf8.o  fitw_fwo_mw7.o  fito_fwo_so1.o \
+   opconv.o  prep.o  rdchan.o  wght2a.o  sort.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o  rdref.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit set 7: mFbW
+OBJS_set7=fitftc_fwo.o \
+   calprd_mfbw.o  fitf_fwo_mf8.o  fitw_fwo_bw13.o  fito_fwo_so1.o \
+   opconv.o  prep.o  rdchan.o  wght2a.o  sort.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o  rdref.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit perturbed CO2
+OBJS_co2=fitftc_co2.o \
+   fitp.o  calprd_co2.o \
+   opconv.o  prep.o  rdchan.o  rdref.o  sort.o  wght2a.o \
+   check1.o  check2.o  fitgas.o  keff.o  opout.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o  xfit10.o  xfit11.o  xfit12.o  xfit13.o
+
+# fit OPTRAN water
+OBJS_optran=fitftc_optran.o \
+   getgrd_optran.o  calptz_optran.o  readact_optran.o \
+   keff_optran.o  interp_optran.o  fitk9_optran.o  fitgas_optran.o \
+   rdref.o  opconv.o  rand.o \
+   xfit2.o  xfit3.o  xfit4.o  xfit5.o  xfit6.o  xfit7.o  xfit8.o \
+   xfit9.o
+
+
+###############################################################################
+# Build executable
+##################
+
+set1: $(OBJS_set1)
+	$(F77) $(OBJS_set1) $(FLIB)
+
+set2: $(OBJS_set2)
+	$(F77) $(OBJS_set2) $(FLIB)
+
+set3: $(OBJS_set3)
+	$(F77) $(OBJS_set3) $(FLIB)
+
+set4: $(OBJS_set4)
+	$(F77) $(OBJS_set4) $(FLIB)
+
+set5: $(OBJS_set5)
+	$(F77) $(OBJS_set5) $(FLIB)
+
+set6: $(OBJS_set6)
+	$(F77) $(OBJS_set6) $(FLIB)
+
+set7: $(OBJS_set7)
+	$(F77) $(OBJS_set7) $(FLIB)
+
+co2: $(OBJS_co2)
+	$(F77) $(OBJS_co2) $(FLIB)
+
+optran: $(OBJS_optran)
+	$(F77) $(OBJS_optran) $(FLIB)
+
+# Compile .f to .o
+.f.o:
+#	echo 'compiling with options '$(OPT)
+	$(F77) -c $(OPT) $*.f

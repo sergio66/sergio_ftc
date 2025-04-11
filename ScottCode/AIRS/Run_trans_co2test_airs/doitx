@@ -1,0 +1,11 @@
+runtrans130x fmw > jout130x_fmw
+runtrans140x fmw > jout140x_fmw
+
+runtrans130x fcow > jout130x_fcow
+runtrans140x fcow > jout140x_fcow
+
+runtrans130x fow short > jout130x_fow_short
+runtrans140x fow short > jout140x_fow_short
+
+runtrans130x fow long > jout130x_fow_long
+runtrans140x fow long > jout140x_fow_long

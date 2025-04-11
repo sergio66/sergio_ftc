@@ -1,0 +1,10 @@
+! Example channel list for SUBSET
+! Suppose we want channels with ID numbers 3, 4, 5, 101, 102, 2005, 2333
+! Then the channel list is
+ 3
+ 4
+ 5
+ 101
+ 102
+ 2005
+ 2333

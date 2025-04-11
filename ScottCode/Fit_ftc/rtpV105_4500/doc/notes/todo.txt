@@ -1,0 +1,26 @@
+
+RTP To Do List
+---------------
+
+write an rptcat utility
+
+rtpread2 and rtpwrite2 should probably check open modes
+
+test on more systems, especially 64-bit systems
+
+Traceability could be aided with an informal annotation describing
+a profile set's sources.  A more rigorous approach, e.g., assigning
+unique ID's to profiles and listing a profiles parents, could be
+undertaken but might be more trouble than it is worth.
+
+Beyond some basic annotations, or checksums of entire files, the
+business of authentication gets quite messy.  It is possible in
+principle to have someone responsible for a set of profiles ``sign''
+the set, similar to how mail can be signed and authenticated with
+PGP, with the interesting additional complication that checksums or
+other signatures of floating-point data must be taken from a
+particular binary representation of that data---to implement this
+you'd need for HDF to allow a sort of aliasing, that would let you
+to see the internal HDF representation for a particular floating
+point object as a sequence of integers.
+

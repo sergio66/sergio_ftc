@@ -1,0 +1,129 @@
+###############################################################################
+# Edit the following section as necessary
+#########################################
+
+#########
+# Assign profile numbers
+#PROFILES='1'
+PROFILES='    2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+          21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40
+          41 42 43 44 45 46 47 48'
+NPROF=`echo $PROFILES | wc -w`
+
+
+#######
+# Assign output dir name prefix for KCARTA & MATLAB output
+OUTDIR='../NH3_trans_cris'
+
+
+#######
+# matlab template script (same for all modules)
+MTEMPLATE='mtemplate_nh3.m'
+
+
+#######
+# kcarta template
+KTEMPLATE='knh3.nml'
+
+
+#######
+# Specify junk/temp filenames
+JUNK1='xxx1'
+JUNK2='xxx2'
+JUNKK='xxx.nml'
+JUNKM='xxx.m'
+JUNKMOUT='xxxm'
+JUNKMAT='xxx.dat'
+
+
+#########
+# Assign KCARTA output filename
+KOUTNAME='kcarta_out.bin'
+
+
+#########
+# Assign conv trans output matlab filename prefix
+# note: full name will be <moutname><prof#>'.mat'
+MOUTNAME='ctrans_nh3_cris_'
+
+
+#########
+# Specify KCARTA executable
+KCARTAEXE='../BIN/kcarta.x'
+
+
+###############################################################################
+###############################################################################
+###############################################################################
+# The code below should not require modification
+################################################
+DATE=`date`
+
+
+# Delete any previous versions of the junk files
+HERE=`pwd`
+rm $JUNK1 $JUNK2 $JUNKK  2> /dev/null || true
+
+
+if (test ! -r $KTEMPLATE)
+then
+   echo 'Error: can not read KCARTA template file '$KTEMPLATE'. Quitting'
+   exit
+fi
+echo 'Starting run for NH3, date: '$DATE
+
+
+# Check if the output dir exists
+if (test ! -d $OUTDIR)
+then
+   mkdir $OUTDIR
+fi
+
+
+# Prepare OUTDIR
+cp -p readkc3.m $OUTDIR
+cd $OUTDIR
+rm $KOUTNAME 2> /dev/null || true
+cd $HERE
+
+
+# Loop over the profiles
+for iprof in $PROFILES
+do
+   echo '***** doing profile '$iprof' *****'
+
+   # Create a junk KCARTA input file for the current profile
+   sed "s/XPROFX/$iprof/" $KTEMPLATE > $JUNKK
+
+   # Run KCARTA
+   FILENAME=$OUTDIR'/'$KOUTNAME
+   $KCARTAEXE $JUNKK $FILENAME
+
+   # Modify the MATLAB template script for the current profile
+   sed "s/XMOUTNAMEX/$MOUTNAME$iprof/
+        s/XKOUTNAMEX/$KOUTNAME/" $MTEMPLATE > $OUTDIR'/'$JUNKM
+   # Run matlab using MTEMPLATE
+   cd $OUTDIR
+   matlab -nojvm -display /dev/null < $JUNKM > $JUNKMOUT
+
+   # Test that the matlab output file exists and is not empty
+   while (test ! -s $MOUTNAME$iprof'.mat')
+   do
+      # Something went wrong!  Wait 5 minutes and then re-try
+      DATE=`date`
+      echo 'MATLAB failed ' $DATE ' Waiting 5 minutes then will try again'
+      sleep 300
+      matlab -nojvm -display /dev/null < $JUNKM >> $JUNKMOUT
+   done
+
+   # Wait a few seconds and then delete the kcarta files
+   sleep 4
+   rm $KOUTNAME $JUNKMAT
+
+   cd $HERE   
+done
+# End of loop on profiles
+
+
+DATE=`date`
+echo 'Ending runs for NH3, date: '$DATE

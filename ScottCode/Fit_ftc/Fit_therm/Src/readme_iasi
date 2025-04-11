@@ -1,0 +1,6 @@
+The SARTA v1.07 version of "sarta_iasi_sep03" used the AIRS "v5"
+algorithm for the reflected downwelling thermal term, with the
+coefs generated with "fittherm6iasi.m" and converted to a FORTRAN
+binary data file with "wrt_therm6_iasi.m".
+
+Scott Hannon, 03 December 2007.

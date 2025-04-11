@@ -1,0 +1,15 @@
+! AIRS solar data file for SRF=031115v3
+!
+! Data for 649-1614 cm-1 comes from M.P. Thekaekara, 1973 Solar
+! Energy v.14 p.109-127 (supplied to us by Chris Barnet).  The ~80
+! cm-1 point spacing data has been interpolated to the AIRS
+! channel freqs and converted to W/(m2.sr.cm-1).
+!
+! Data for 2181-2665 cm-1 comes from ATMOS Solar Spectra, and was
+! supplied to us by ATMOS Principal Investigator Michael Gunson.
+! In particular we used the file "atmos_corrected_solar.mat".
+! This data was then directly convolved with the estimated AIRS
+! SRFs for each channel to approximate the effective AIRS solar.
+!
+!chan   frequency    solar
+!---- ----------- --------

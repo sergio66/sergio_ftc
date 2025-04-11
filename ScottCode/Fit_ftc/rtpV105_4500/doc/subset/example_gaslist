@@ -1,0 +1,8 @@
+! Example gas list for SUBSET
+! Suppose we only want gases with ID numbers 1 (H2O) and 3 (O3)
+! Then the gas list is
+ 1
+ 3
+
+
+

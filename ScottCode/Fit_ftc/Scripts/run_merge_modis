@@ -1,0 +1,195 @@
+FITSET=$1
+FIN=$2
+FOUT=$3
+
+###############################################################################
+# Edit filenames as needed
+##########################
+#
+# Water continuum coef file
+CONCOEF='../Coef_MODIS/coef_con1_modis.dat'
+#
+# Optran grid and average predictor files
+OPTGRID='azfwocm_jul00.txt'
+OPTAVGP='predavg.txt'
+#
+# Programs
+PROGRAM='../Bin/merge_'
+PROGRAMOPT='../Bin/optheader'
+PROGRAMDUM='../Bin/mkdummy_'
+#
+# Dummy coef file
+# Note: full name is {fout dir}<dummy><fitset><ext>
+DUMMY='dummy_'
+EXT='.dat'
+#
+# Temporary files
+JIN='jin'
+JOUT='jout'
+JUNK1='xxx1'
+JUNK2='xxx2'
+#
+###############################################################################
+# Supported sets
+################
+#
+ALLSET='{ set1 set2 set3 set4 set5 set6 set7 optran co2 }'
+#
+###############################################################################
+
+# Prompt for input if not already specified on command-line
+X1=$FITSET'-'
+X2=$FIN'-'
+X3=$FOUT'-'
+
+if (test $X1 = '-')
+then
+   echo 'Which set? '$ALLSET
+   read FITSET
+fi
+
+
+if (test $X2 = '-')
+then
+   echo 'Enter name of the raw '$FITSET' input file: '
+   read FIN
+fi
+
+
+if (test $X3 = '-')
+then
+   echo 'Enter name for the merged '$FITSET' output file: '
+   read FOUT
+fi
+
+
+###############################################################################
+# Check FITSET
+IOK=`echo $ALLSET | grep " $FITSET " | cut -f1 -d" "`
+if (test -z $IOK'')
+then
+   echo 'error: unsupported <fit set> = '$FITSET
+   echo 'supported <fit set> = '$ALLSET
+   exit
+fi
+
+
+###############################################################################
+# Determine output dir from FOUT
+
+II='1'
+IS='0'
+OUTNAME=$FOUT
+OUTDIR=''
+while (test $II -gt 0)
+do
+   # Find index of first "/" in string
+   II=`expr index $OUTNAME '/'`
+   IL=`expr length $OUTNAME`
+   IIP1=`expr $II + 1`
+   JUNK=$IS
+   IS=`expr $JUNK + $II`
+   JUNK=$OUTNAME
+   OUTNAME=`echo $JUNK | cut -c$IIP1-$IL`
+   if (test $IS -gt 0)
+   then
+      OUTDIR=`echo $FOUT | cut -c1-$IS`
+   fi
+done
+
+###############################################################################
+# Check files exist
+
+
+if (test ! -r $FIN)
+then
+   echo 'Error: did not find raw coef file: '$FIN
+   exit
+fi
+
+
+
+if (test ! -d $OUTDIR)
+then
+   echo 'Error: did not find output dir: '$OUTDIR
+   exit
+fi
+
+
+if (test ! -r $COEFCON)
+then
+   echo 'error: did not find H2O continuum coefficient file: '$COEFCON
+   exit
+fi
+
+
+if (test ! -r $OPTGRID)
+then
+   echo 'error: did not find OPTRAN grid file: '$OPTGRID
+   exit
+fi
+
+
+if (test ! -r $OPTAVGP)
+then
+   echo 'error: did not find OPTRAN average predictor file: '$OPTAVGP
+   exit
+fi
+
+
+###############################################################################
+
+
+DATE=`date`
+echo 'Start run_merge at: '$DATE
+
+case $FITSET in
+
+   optran) # Create temporary header binary file
+      rm -f $JUNK1
+      echo $OPTGRID > $JIN
+      echo $OPTAVGP >> $JIN
+      echo $JUNK1 >> $JIN
+      #
+      # Run program to create header
+      echo '------------------ creating optran header ------------------'
+      $PROGRAMOPT < $JIN > $JOUT
+      #
+      # Concatenate header and raw coefs
+      echo '-------- concatenating optran header and raw coefs ---------'
+      cat $JUNK1 $FIN > $FOUT
+      #
+      # Run dummy
+      echo $JUNK2 > $JIN
+      echo '---------------- creating '$FITSET' dummy -----------------------'
+      $PROGRAMDUM$FITSET < $JIN > $JOUT
+      #
+      # Concatenate header and raw coefs
+      echo '------- concatenating optran header and dummy coefs --------'
+      cat $JUNK1 $JUNK2 > $OUTDIR$DUMMY$FITSET$EXT
+      rm $JUNK1 $JUNK2 ;;
+
+   co2) # Run dummy
+      JUNK=$OUTDIR$DUMMY$FITSET$EXT
+      echo $JUNK > $JIN
+      echo '---------------- creating '$FITSET' dummy -----------------------'
+      $PROGRAMDUM$FITSET < $JIN > $JOUT ;;
+
+   *) # Create input instruction file for merge
+      echo $CONCOEF > $JIN
+      echo $FIN >> $JIN
+      echo $FOUT >> $JIN
+      #
+      # Run merge
+      echo '--------------- running '$FITSET' merge -------------------------'
+      $PROGRAM$FITSET < $JIN > $JOUT
+      #
+      # Run dummy
+      JUNK=$OUTDIR$DUMMY$FITSET$EXT
+      echo $JUNK > $JIN
+      echo '---------------- creating '$FITSET' dummy -----------------------'
+      $PROGRAMDUM$FITSET < $JIN > $JOUT ;;
+
+esac
+
+### end of file ###

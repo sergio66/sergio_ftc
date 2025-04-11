@@ -1,0 +1,52 @@
+Warning: Unable to open display '/dev/null'.  You will not be able to display graphics on the screen.
+
+                            < M A T L A B (R) >
+                  Copyright 1984-2010 The MathWorks, Inc.
+                Version 7.12.0.635 (R2011a) 64-bit (glnxa64)
+                               March 18, 2011
+
+ 
+  To get started, type one of these: helpwin, helpdesk, or demo.
+  For product information, visit www.mathworks.com.
+ 
+asl matlab startup
+setting fat plot labels
+>> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >>  
+>> Starting to process data ------------------------------------------
+>> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >>  
+>> Unchunking kcarta file kcarta_out.bin and creating temp file xxx.dat
+>> finished pre-extending output file
+working on chunk 1
+working on chunk 2
+working on chunk 3
+working on chunk 4
+working on chunk 5
+working on chunk 6
+working on chunk 7
+working on chunk 8
+working on chunk 9
+working on chunk 10
+working on chunk 11
+working on chunk 12
+working on chunk 13
+working on chunk 14
+working on chunk 15
+working on chunk 16
+working on chunk 17
+working on chunk 18
+working on chunk 19
+working on chunk 20
+working on chunk 21
+>> >> >> >>  
+>> Starting to processing data from temp file
+>> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> >> doing angle number 1
+doing angle number 2
+doing angle number 3
+doing angle number 4
+doing angle number 5
+doing angle number 6
+>> >> >> >> >> >> >> >> >> >> >>  
+>> Saving convolved data to file nh3_m150f_long_48
+>> >> >>  
+>> Finished processing data, quitting matlab
+>> 

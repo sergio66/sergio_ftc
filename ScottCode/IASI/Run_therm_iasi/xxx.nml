@@ -1,0 +1,291 @@
+ $nm_params
+ namecomment    =  '******* PARAMS section *******'
+ !Paths/mixed paths output is to be layer-to-space optical depth
+ KLayer2Sp      = 1
+ !water continuum MT_CKD (con1)
+ KCKD           = 1
+ !short header
+ kLongOrShort   = -1
+ $end
+
+ $nm_frqncy
+ namecomment    =  '******* FRQNCY section *******'
+ rf1            = 605.0
+ rf2            = 2830.0
+ $end
+
+ $nm_molgas
+ namecomment    =  '******* MOLGAS section *******'
+ !use all gases in MOLGAS
+ iNGas          = -1
+ $end
+
+ $nm_xscgas
+ namecomment    =  '******* XSCGAS section *******'
+ !use all gases in XSCGAS
+ iNxsec         = -1
+ $end
+
+ $nm_prfile
+ namecomment    =  '******* PRFILE section *******'
+ caPfname       =  '../Prof_therm/therm_reg48.op'
+ $end
+
+ $nm_weight
+ namecomment    =  '******* WEIGHT section *******'
+ !this is to develop fast forward models
+ iNpmix         = 1
+ caaMixFileLines= 
+    !all gases have weight 1.0
+    '1   -1    1.0    -1'
+ $end
+
+ $nm_radnce
+ namecomment    =  '******* RADNCE section *******'
+ !12 atmospheres
+ iNatm          = 12
+
+ ! Atmos #1: no solar, with refl thermal, angle 0
+ iaMPSetForRad(1)   =  1
+ raPressStart(1)    =  1013.9476
+ raPressStop(1)     =  000.0
+ raTSpace(1)        =   2.960000
+ raTSurf(1)         =  275.0
+ raSatAngle(1)      =  0.0
+ raSatHeight(1)     =   -1.000000
+ iakSolar(1)        =  -1
+ rakSolarAngle(1)   =  0.0000000E+00
+ rakSolarRefl(1)    =  -1.0
+ iakThermal(1)      =   0
+ rakThermalAngle(1) =  -1.000000
+ iakThermalJacob(1) =   1
+ caEmissivity(1)    =   'dummyfilename'
+ raSetEmissivity(1) =  0.850
+
+ ! Atmos #2: no solar, with refl thermal, angle 33
+ iaMPSetForRad(2)   =  1
+ raPressStart(2)    =  1013.9476
+ raPressStop(2)     =  000.0
+ raTSpace(2)        =   2.960000
+ raTSurf(2)         =  275.0
+ raSatAngle(2)      =  32.8244
+ raSatHeight(2)     =   -1.000000
+ iakSolar(2)        =  -1
+ rakSolarAngle(2)   =  0.0000000E+00
+ rakSolarRefl(2)    =  -1.0
+ iakThermal(2)      =   0
+ rakThermalAngle(2) =  -1.000000
+ iakThermalJacob(2) =   1
+ caEmissivity(2)    =   'dummyfilename'
+ raSetEmissivity(2) =  0.850
+
+ ! Atmos #3: no solar, with refl thermal, angle 45
+ iaMPSetForRad(3)   =  1
+ raPressStart(3)    =  1013.9476
+ raPressStop(3)     =  000.0
+ raTSpace(3)        =   2.960000
+ raTSurf(3)         =  275.0
+ raSatAngle(3)      =  44.8285
+ raSatHeight(3)     =   -1.000000
+ iakSolar(3)        =  -1
+ rakSolarAngle(3)   =  0.0000000E+00
+ rakSolarRefl(3)    =  -1.0
+ iakThermal(3)      =   0
+ rakThermalAngle(3) =  -1.000000
+ iakThermalJacob(3) =   1
+ caEmissivity(3)    =   'dummyfilename'
+ raSetEmissivity(3) =  0.850
+
+ ! Atmos #4: no solar, with refl thermal, angle 53
+ iaMPSetForRad(4)   =  1
+ raPressStart(4)    =  1013.9476
+ raPressStop(4)     =  000.0
+ raTSpace(4)        =   2.960000
+ raTSurf(4)         =  275.0
+ raSatAngle(4)      =  53.4704
+ raSatHeight(4)     =   -1.000000
+ iakSolar(4)        =  -1
+ rakSolarAngle(4)   =  0.0000000E+00
+ rakSolarRefl(4)    =  -1.0
+ iakThermal(4)      =   0
+ rakThermalAngle(4) =  -1.000000
+ iakThermalJacob(4) =   1
+ caEmissivity(4)    =   'dummyfilename'
+ raSetEmissivity(4) =  0.850
+
+ ! Atmos #5: no solar, with refl thermal, angle 60
+ iaMPSetForRad(5)   =  1
+ raPressStart(5)    =  1013.9476
+ raPressStop(5)     =  000.0
+ raTSpace(5)        =   2.960000
+ raTSurf(5)         =  275.0
+ raSatAngle(5)      =  59.8336
+ raSatHeight(5)     =   -1.000000
+ iakSolar(5)        =  -1
+ rakSolarAngle(5)   =  0.0000000E+00
+ rakSolarRefl(5)    =  -1.0
+ iakThermal(5)      =   0
+ rakThermalAngle(5) =  -1.000000
+ iakThermalJacob(5) =   1
+ caEmissivity(5)    =   'dummyfilename'
+ raSetEmissivity(5) =  0.850
+
+ ! Atmos #6: no solar, with refl thermal, angle 65
+ iaMPSetForRad(6)   =  1
+ raPressStart(6)    =  1013.9476
+ raPressStop(6)     =  000.0
+ raTSpace(6)        =   2.960000
+ raTSurf(6)         =  275.0
+ raSatAngle(6)      =  65.0428
+ raSatHeight(6)     =   -1.000000
+ iakSolar(6)        =  -1
+ rakSolarAngle(6)   =  0.0000000E+00
+ rakSolarRefl(6)    =  -1.0
+ iakThermal(6)      =   0
+ rakThermalAngle(6) =  -1.000000
+ iakThermalJacob(6) =   1
+ caEmissivity(6)    =   'dummyfilename'
+ raSetEmissivity(6) =  0.850
+
+ ! Atmos #7: no solar, no refl thermal, angle 0
+ iaMPSetForRad(7)   =  1
+ raPressStart(7)    =  1013.9476
+ raPressStop(7)     =  000.0
+ raTSpace(7)        =   2.960000
+ raTSurf(7)         =  275.0
+ raSatAngle(7)      =  0.0
+ raSatHeight(7)     =   -1.000000
+ iakSolar(7)        =  -1
+ rakSolarAngle(7)   =  0.0000000E+00
+ rakSolarRefl(7)    =  -1.0
+ iakThermal(7)      =  -1
+ rakThermalAngle(7) =  -1.000000
+ iakThermalJacob(7) =   1
+ caEmissivity(7)    =   'dummyfilename'
+ raSetEmissivity(7) =  0.850
+
+ ! Atmos #8: no solar, no refl thermal, angle 33
+ iaMPSetForRad(8)   =  1
+ raPressStart(8)    =  1013.9476
+ raPressStop(8)     =  000.0
+ raTSpace(8)        =   2.960000
+ raTSurf(8)         =  275.0
+ raSatAngle(8)      =  32.8244
+ raSatHeight(8)     =   -1.000000
+ iakSolar(8)        =  -1
+ rakSolarAngle(8)   =  0.0000000E+00
+ rakSolarRefl(8)    =  -1.0
+ iakThermal(8)      =  -1
+ rakThermalAngle(8) =  -1.000000
+ iakThermalJacob(8) =   1
+ caEmissivity(8)    =   'dummyfilename'
+ raSetEmissivity(8) =  0.850
+
+ ! Atmos #9: no solar, no refl thermal, angle 45
+ iaMPSetForRad(9)   =  1
+ raPressStart(9)    =  1013.9476
+ raPressStop(9)     =  000.0
+ raTSpace(9)        =   2.960000
+ raTSurf(9)         =  275.0
+ raSatAngle(9)      =  44.8285
+ raSatHeight(9)     =   -1.000000
+ iakSolar(9)        =  -1
+ rakSolarAngle(9)   =  0.0000000E+00
+ rakSolarRefl(9)    =  -1.0
+ iakThermal(9)      =  -1
+ rakThermalAngle(9) =  -1.000000
+ iakThermalJacob(9) =   1
+ caEmissivity(9)    =   'dummyfilename'
+ raSetEmissivity(9) =  0.850
+
+ ! Atmos #10: no solar, no refl thermal, angle 53
+ iaMPSetForRad(10)   =  1
+ raPressStart(10)    =  1013.9476
+ raPressStop(10)     =  000.0
+ raTSpace(10)        =   2.960000
+ raTSurf(10)         =  275.0
+ raSatAngle(10)      =  53.4704
+ raSatHeight(10)     =   -1.000000
+ iakSolar(10)        =  -1
+ rakSolarAngle(10)   =  0.0000000E+00
+ rakSolarRefl(10)    =  -1.0
+ iakThermal(10)      =  -1
+ rakThermalAngle(10) =  -1.000000
+ iakThermalJacob(10) =   1
+ caEmissivity(10)    =   'dummyfilename'
+ raSetEmissivity(10) =  0.850
+
+ ! Atmos #11: no solar, no refl thermal, angle 60
+ iaMPSetForRad(11)   =  1
+ raPressStart(11)    =  1013.9476
+ raPressStop(11)     =  000.0
+ raTSpace(11)        =   2.960000
+ raTSurf(11)         =  275.0
+ raSatAngle(11)      =  59.8336
+ raSatHeight(11)     =   -1.000000
+ iakSolar(11)        =  -1
+ rakSolarAngle(11)   =  0.0000000E+00
+ rakSolarRefl(11)    =  -1.0
+ iakThermal(11)      =  -1
+ rakThermalAngle(11) =  -1.000000
+ iakThermalJacob(11) =   1
+ caEmissivity(11)    =   'dummyfilename'
+ raSetEmissivity(11) =  0.850
+
+ ! Atmos #12: no solar, no refl thermal, angle 65
+ iaMPSetForRad(12)   =  1
+ raPressStart(12)    =  1013.9476
+ raPressStop(12)     =  000.0
+ raTSpace(12)        =   2.960000
+ raTSurf(12)         =  275.0
+ raSatAngle(12)      =  65.0428
+ raSatHeight(12)     =   -1.000000
+ iakSolar(12)        =  -1
+ rakSolarAngle(12)   =  0.0000000E+00
+ rakSolarRefl(12)    =  -1.0
+ iakThermal(12)      =  -1
+ rakThermalAngle(12) =  -1.000000
+ iakThermalJacob(12) =   1
+ caEmissivity(12)    =   'dummyfilename'
+ raSetEmissivity(12) =  0.850
+
+ $end
+
+ $nm_jacobn
+ namecomment    =  '******* JACOBN section *******'
+ !no jacobians
+ iJacob         = 0
+ $end
+
+ $nm_spectr
+ namecomment    =  '******* SPECTRA section ******'
+ !no external spectra
+ iNumNewGases   = -1
+ $end
+
+ $nm_scattr
+ namecomment    =  '******* SCATTR section *******'
+ !no scattering
+ iNclouds       = -1
+ $end
+
+ $nm_output
+ namecomment    =  '******* OUTPUT section *******'
+ caComment      = 'data for reflected thermal fit'
+ !dump out mixed path layer 4 (4 up from surface = 97 from top)
+ iaPrinter(1)   = 2
+ iaGPMPAtm(1)   = 1
+ iaNp(1)        = 1
+ iaaOp(1,1)     = 4
+
+ !dump out radiance at TOA
+ iaPrinter(2)   = 3
+ iaGPMPAtm(2)   = -1
+ iaNp(2)        = 1
+ raaOp(2,1)     = 0.0
+
+ $end
+
+ $nm_endinp
+ namecomment    =  '******* ENDINP section *******'
+ $end

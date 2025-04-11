@@ -1,0 +1,80 @@
+
+/* dump_chan -- dump RTP channel information
+ * 
+ */
+
+#include <stdio.h>
+#include "hdf.h"
+#include "rtp.h"
+
+void dump_chan(int ci) {
+
+  int i, j;
+  float64 x;
+  char c, *p, *q, s[32];
+
+  int s1, nvf;
+  int32 vdata_id;
+  char *buf;
+  int *p1, *p2, *p3;
+  struct FLIST (*flist)[];
+
+  p1 = chan[ci].p1;
+  p2 = chan[ci].p2;
+  p3 = chan[ci].p3;
+  nvf = chan[ci].nvf;
+  vdata_id = chan[ci].vdata_id;
+
+  buf = chan[ci].vbuf;  /* vdata buffer */
+  flist = chan[ci].flist;
+
+  fprintf(stdout, 
+	  "---------------------------------------------------------\n");
+  fprintf(stdout, "\t\t    channel %d dump\n", ci);
+  fprintf(stdout, "%8s  %7s %7s %8s%6s %6s %6s\n", 
+	  "name", "type", "order", "value", "p1", "p2", "p3");
+
+  for (i=0; i < nvf; i++) {
+
+    if ((*flist)[i].htype == DFNT_INT32) {
+      x = *((int32 *) &buf[p1[i]]);
+      sprintf(s, "%8g", x);
+    }
+    else if ((*flist)[i].htype == DFNT_FLOAT32) {
+      x = *((float32 *) &buf[p1[i]]);
+      sprintf(s, "%8g", x);
+    }
+    else if ((*flist)[i].htype == DFNT_FLOAT64) {
+      /* x = *((float64 *) &buf[p1[i]]); */
+      /* work around for IRIX word alignment problem */
+      q = &buf[p1[i]];
+      p = (char *) &x;
+      for (j=0; j<8; j++)
+        *p++ = *q++;
+      sprintf(s, "%8g", x);
+    }
+    else if ( strcmp((*flist)[i].fname, "calflag") == 0 ) {
+      x = buf[p1[i]];
+      sprintf(s, "%8g", x);
+    }
+    else if ( (*flist)[i].htype == DFNT_CHAR8 ) {
+      p = &buf[p1[i]];
+      strncpy(s, p, 8);
+      s[8] = 0;
+    }
+    else {
+      fprintf(stdout, "dump_chan(): unknown HDF type %d\n", 
+	      (*flist)[i].htype);
+      exit(-1);
+    }
+
+    fprintf(stdout, "%8s %7d %7d %8s %6d %6d %6d\n", 
+	    (*flist)[i].fname,
+	    (*flist)[i].htype,
+	    (*flist)[i].order,
+	    s, p1[i], p2[i], p3[i]);
+  }
+  fprintf(stdout, 
+	  "---------------------------------------------------------\n");
+}
+

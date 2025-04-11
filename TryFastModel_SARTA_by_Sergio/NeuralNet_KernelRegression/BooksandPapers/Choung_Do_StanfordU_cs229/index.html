@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge"> -->
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+  <title>CS229: Machine Learning</title>
+
+  <!-- bootstrap -->
+  <!-- <link rel="stylesheet" href="./style/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+  <link rel="stylesheet" href="./style/bootstrap-theme.min.css">
+  <link href="./style/newstyle.css" rel="stylesheet" type="text/css">
+  <body>
+  <nav class="navbar navbar-expand-md navbar-dark">
+    <a href="http://cs229.stanford.edu/">
+      <img src="./static/seal-dark-red.png" style="height:40px; float: left; margin-left: 20px; margin-right: 20px;"></a>
+      <a class="navbar-brand" href="http://cs229.stanford.edu/">CS229</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item"><a class="nav-link" href="#announcement">Announcements</a></li>
+        <li class="nav-item"><a class="nav-link" href="./syllabus.html">Syllabus</a></li>
+        <li class="nav-item"><a class="nav-link" href="#info">Course Info</a></li>
+        <li class="nav-item"><a class="nav-link" href="#logistics">Logistics</a></li>
+        <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://piazza.com/class/jkbylqx4kcp1h3">Piazza</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="jumbotron jumbotron-fluid">
+      <div class="container">
+      <h1 class="display-5">CS229: Machine Learning</h1>
+      <h2 class="display-7">Autumn 2018</h2><h3>Instructors</h3>
+      <div class="row">
+        <div class="instructor">
+          <a href="https://cs.stanford.edu/people/rondror/">
+            <img class="headshot" src="static/dror-ron.png" style="text-align:center;">
+            <div style="text-align:center;">Ron Dror</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="http://www.andrewng.org/">
+            <img class="headshot" src="static/ng-andrew.png" style="text-align:center;">
+            <div style="text-align:center;">Andrew Ng</div>
+          </a>
+        </div>
+      </div>
+      <br />
+      <p><strong>Course Description</strong>&nbsp;&nbsp; This course provides a broad introduction to machine learning and statistical pattern recognition. Topics include: supervised learning (generative/discriminative learning, parametric/non-parametric learning, neural networks, support vector machines); unsupervised learning (clustering, dimensionality reduction, kernel methods); learning theory (bias/variance tradeoffs; VC theory; large margins); reinforcement learning and adaptive control. The course will also discuss recent applications of machine learning, such as to robotic control, data mining, autonomous navigation, bioinformatics, speech recognition, and text and web data processing.</p>
+    </div>
+
+    <div style="text-align:center; padding:40px 0px 0px 0px;">
+      <a href="./syllabus.html">
+      <button type="button" class="btn btn-success btn-lg">Syllabus</button>
+      </a>
+      <a href="https://piazza.com/class/jkbylqx4kcp1h3">
+      <button type="button" class="btn btn-danger btn-lg">Piazza Forum</button>
+      </a>
+      <a href="./calendar.html">
+      <button type="button" class="btn btn-info btn-lg">Schedule/Calendar</button>
+      </a>
+    </div>
+  </div>
+
+
+
+  <section id="announcement">
+  <div>
+      <div class="container">
+        <h2>Announcements</h2>
+          <ul>CS 229 projects of the Fall 2018 edition are now <a href="http://cs229.stanford.edu/proj2018/">available on the website</a>! Congratulations to all the students for their awesome work! 
+            <!--
+            <li><strong>12/08/18</strong> The poster session will be hold on 12/12 at 8:00 am to 11:30 am at <a href="https://alumni.stanford.edu/get/page/resources/alumnicenter/directions">Arrillaga Alumni Center</a></li>
+            <li><strong>11/15/18</strong> Problem Set 4 has been posted on the <a href="syllabus.html">syllabus</a> page. It will be due 12/6 at 11:59pm.</li>
+            <li><strong>11/09/18</strong> Please take a few minutes to fill in the <a href="https://goo.gl/forms/kHZKQAEnRqN40wcq2">Mid-Quarter Survey</a> for CS229. We give careful consideration to student feedback.</li>
+            <li><strong>11/02/18</strong> Problem Set 3 has now been posted on the <a href="syllabus.html">syllabus</a> page. It will be due 11/15 at 11:59pm.</li>
+            <li><strong>10/26/18</strong> Practice midterms are available on <a href="https://piazza.com/class/j7hypc9uyhj577?cid=775">Piazza</a>.</li>
+            <li><strong>10/26/18</strong> Problem Set 1 grades have been released on <a href="https://gradescope.com/">Gradescope</a>.</li>
+            <li><strong>10/17/18</strong> Problem Set 2 has been posted on the <a href="syllabus.html">syllabus</a> page. It will be due 10/31 at 11:59pm.</li>
+            <li><strong>10/03/18</strong> Problem Set 1 has now been posted on the <a href="syllabus.html">syllabus</a> page. It will be due 10/17 at 11:59pm.</li>
+            <li><strong>09/24/18</strong> Problem Set 0 has now been posted on the <a href="syllabus.html">syllabus</a> page. It will be due 10/3 at 11:59pm.</li>
+            <li><strong>09/24/18</strong> <a href="calendar.html">Office hours</a> have now been posted.</li>
+            <li><strong>09/23/18</strong> The <a href="materials/handout.pdf">class handout</a> is now out!</li>
+            <li><strong>09/17/18</strong> The first discussion session (optional) will be held Friday 9/28 1:30-2:50PM at <a href="https://campus-map.stanford.edu/?srch=bishop%20auditorium">Bishop Auditorium</a>.</li>
+            <li><strong>09/17/18</strong> Welcome to CS229! We look forward to meeting you Monday 9/24 at 9:30 am!</li>-->
+          </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="info">
+  <div class="container">
+    <h2>Course Information</h2>
+    <dl>
+      <dt>Time and Location</dt><dd>MW 9:30 AM - 10:50 AM, <a href="https://campus-map.stanford.edu/?srch=bishop%20auditorium"> Bishop Auditorium</a></dd>
+      <dt>Discussion sections</dt><dd>Bishop Auditorium, Fridays 1:30-2:50pm. Sections will be recorded and attendance is optional.</dd>
+      <dt>Contact Information</dt><dd>If you have a question, to get a response from the teaching staff quickly we strongly encourage you to post it to the class <a href="https://piazza.com/class/jkbylqx4kcp1h3">Piazza forum</a>.
+
+      For private matters, please make a private note visible only to the course instructors.
+      For longer discussions with TAs and to get help in person, we strongly encourage you to come to office hours.
+      <!--You can also reach out to us via email at <a href="mailto:cs229-qa@cs.stanford.edu">cs229-qa@cs.stanford.edu</a> (a mailing list consisting of the TAs and instructors) for project questions.-->
+      Answers to commonly asked questions and clarifications to the homeworks will be posted on the <a href="faq.html">FAQ</a>.
+      </dd>
+
+      <dt>Office Hours</dt>
+      <dd><em>Office hours can be found <a href="./calendar.html">here</a>.</em></dd>
+
+      <dt>Course Coordinator</dt>
+      <div class="row">
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/swatidube/">
+            <img class="headshot" src="static/dube-swati.png" style="text-align:center;">
+            <div style="text-align:center;">Swati Dube</div>
+          </a>
+        </div>
+      </div>
+      <dt>Teaching Assistants</dt>
+      <div class="row">
+        <div class="instructor">
+          <a href="https://stanford.edu/~shervine">
+            <img class="headshot" src="static/amidi-shervine.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Shervine Amidi</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="http://ai.stanford.edu/~avati">
+            <img class="headshot" src="static/avati-anand.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Anand Avati<br>(co-head TA)</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="http://chrischute.com">
+            <img class="headshot" src="static/chute-chris.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Chris Chute</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="#">
+            <img class="headshot" src="static/colas-gael.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Gael Colas</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="http://web.stanford.edu/~tonyduan/">
+            <img class="headshot" src="static/duan-tony.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Tony Duan</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://vikranth.people.stanford.edu/">
+            <img class="headshot" src="static/dwaracherla-vikranth.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Vikranth<br>Dwaracherla</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/ashkon-farhangi/">
+            <img class="headshot" src="static/farhangi-ashkon.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Ashkon Farhangi*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/sheila-gao-74153487/">
+            <img class="headshot" src="static/gao-xuhua.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Xuhua Gao</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/hojat-ghorbanidehno/">
+            <img class="headshot" src="static/ghorbanidehno-hojat.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Hojat<br>Ghorbanidehno</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://fantine.github.io">
+            <img class="headshot" src="static/huot-fantine.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Fantine Huot*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="#">
+            <img class="headshot" src="static/kaur-jaspreet.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Jaspreet Kaur*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/jihoonandykim/">
+            <img class="headshot" src="static/kim-andy.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Andy Kim</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/zahra-koochak-8bb175a1/">
+            <img class="headshot" src="static/koochak-zahra.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Zahra Koochak</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://shrep.github.io/">
+            <img class="headshot" src="static/pandey-shreyash.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Shreyash Pandey</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="#">
+            <img class="headshot" src="static/parulekar-atharva.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Atharva <br>Parulekar*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/suvadippaul/">
+            <img class="headshot" src="static/paul-suvadip.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Suvadip Paul</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/ashwini-ramamoorthy/">
+            <img class="headshot" src="static/ramamoorthy-ashwini.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Ashwini <br>Ramamoorthy</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="#">
+            <img class="headshot" src="static/srouji-mario.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Mario Srouji*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="#">
+            <img class="headshot" src="static/steinberg-ethan.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Ethan Steinberg*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="mailto:raphael@cs.stanford.edu">
+            <img class="headshot" src="static/townshend-raphael.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Raphael <br>Townshend*<br>(co-head TA)</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/cindywang1/">
+            <img class="headshot" src="static/wang-cindy.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Cindy Wang</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="http://hanson.stanford.edu/index.php?loc=people_currentstudents#yuWang">
+            <img class="headshot" src="static/wang-yu.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Yu Wang</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/xiaoyan-wu/">
+            <img class="headshot" src="static/wu-xiaoyan.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Xiaoyan Wu</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://chrisyeh96.github.io">
+            <img class="headshot" src="static/yeh-christopher.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Christopher Yeh*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="https://www.linkedin.com/in/akhilayerukola/">
+            <img class="headshot" src="static/yerukola-akhila.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Akhila Yerukola*</div>
+          </a>
+        </div>
+        <div class="instructor">
+          <dt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</dt>
+          <a href="#">
+          </a>
+        </div>
+        <div class="instructor">
+          <a href="http://cs.stanford.edu/people/zjian/">
+            <img class="headshot" src="static/zhang-jian.png" style="text-align:center;">
+            <div style="text-align:center;font-size: 90%;">Jian Zhang</div>
+          </a>
+        </div>
+
+      </div>
+      <dd><i>* denotes a project TA</i></dd>
+      <dt>FAQ</dt>
+      <dd>Answers to frequently asked questions can be found <a href="faq.html">here</a>.</dd>
+      <dt>Handout</dt>
+      <dd>The class handout can be downloaded <a href="materials/handout.pdf">here</a>.</dd>
+  </div>
+  </section>
+
+  <section id="logistics">
+    <div class="container">
+
+    <h2>Logistics</h2>
+    <dl>
+    <dt>Prerequisites </dt>
+    <dd>
+    Students are expected to have the following background:
+    <ul>
+      <li>Knowledge of basic computer science principles and skills, at a level sufficient to write a reasonably non-trivial computer program.</li>
+      <li>Familiarity with probability theory (CS 109 or STATS 116)</li>
+      <li>Familiarity with linear algebra (any one of Math 104, Math 113, or CS 205 should be sufficient)</li>
+    </ul>
+    </dd>
+
+    <dt>Sections</dt>
+    <dd>
+    To review material from the prerequisites or to supplement the lecture material, there will occasionally be extra discussion sections held on Friday. An announcement will be made whenever one of these sections is held. Attendance at these sections is optional.
+    </dd>
+
+    <dt>Course Materials</dt>
+    <dd>There is no required text for this course. Notes will be posted periodically on the <a href="syllabus.html">class syllabus</a>.</dd>
+
+    <dt>Grading</dt>
+    <dd>There will be <b>four written</b> homeworks, one <b>midterm</b>, and a major open-ended <b>term project</b> (see the <a href="projects.html">projects page</a> for details). The assignments will contain written questions and questions that require some Python programming. In the term project, you will investigate some interesting aspect of machine learning or apply machine learning to a problem that interests you.<br>
+      We try very hard to make questions unambiguous, but some ambiguities may remain. Ask if confused or state your assumptions explicitly. Reasonable assumptions will be accepted in case of ambiguous questions.<br>
+      Course grades: will be based <b>40%</b> on homeworks (10% each), <b>20%</b> on the midterm, and <b>40%</b> on the major term project.</dd>
+    <dt>Submitting Assignments</dt>
+    <dd> Assignments will be submitted through <a href="https://gradescope.com/">Gradescope</a>. You should have received an invite to Gradescope for CS229 Machine Learning Fall 2018. Login via the invite, and submit the assignments on time. If you have not received an invite, please post a private message on Piazza.<!--Sign up for the course using entry code <b>9ZRWVZ</b>. <a href="gradescope.html">More detailed instructions</a>.--></dd>
+    <dt>Late assignments</dt>
+    <dd>Each student will have a total of <b>seven free late (calendar) days</b> to use for homeworks, project proposals and project milestones. Once these late days are exhausted, any assignments turned in late will be penalized 20% per late day. However, <b>no assignment will be accepted more than three days after its due date</b>, and late days cannot be used for the final project poster or write-up. Each 24 hours or part thereof that a homework is late uses up one full late day.</dd>
+    <dt>Honor code</dt>
+    <dd><p>We strongly encourage students to form study groups. Students may discuss and work on homework problems in groups. However, each student must write down the solutions independently, and without referring to written notes from the joint session. In other words, each student must understand the solution well enough in order to reconstruct it by him/herself. In addition, each student should write on the problem set the set of people with whom s/he collaborated.<br />
+      Further, since we occasionally reuse problem set questions from previous years, we expect students not to copy, refer to, or look at the solutions in preparing their answers. <b>It is an honor code violation to intentionally refer to a previous year's solutions</b>. This applies both to the official solutions and to solutions that you or someone else may have written up in a previous year.</p></dd>
+    </dl>
+  </div>
+  </section>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -1,0 +1,39 @@
+
+Comments on the RTP profile variable "landtype".
+Last updated: Scott Hannon,  7 December 2001
+
+The land type code number is intended as a means of tracking the type
+of land (if any) within the field of view of the observing instrument.
+
+There is currently no pre-defined land code.
+
+Suggests & comments:
+
+The RTP emissivity (& reflectivity) for each profile should represent
+the entire FOV of the observing instrument.  In the case where the FOV
+includes multiple surface types, it may be necessary to compute a
+weighted average emissivity for the surface.
+
+The landtype should apply to just landfrac, not the entire FOV.
+The remainder (1 - landfrac) is assumed to be ocean surface.
+
+The landtype variable is a 4-byte integer value with ~4 billion
+possible values.  A table with 4 billion values isn't practical, so
+it might make more sense to define a smaller land type table and
+use the landtype variable to encode two separate types (primary and
+secondary) by applying a power of 10 shift to the secondary data.
+Since 4-byte integers can handle 8 digit (base 10) numbers, so we
+could do something such as
+
+   ccc%%CCC
+
+where digits "CCC represent the primary land type code number
+(with 999 possible values), and digits "ccc" present the secondary
+land type with digits "%%" the percent land of this secondary type.
+If the secondary type is omitted, this would mean the primary type
+covers 100% of the land.
+
+   Example: "4317002" would mean secondary land type 43 covers
+   17 percent of the land, while primary land type 2 covers the
+   remaining land (100 - 17 = 83 %).
+

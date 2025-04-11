@@ -1,0 +1,58 @@
+-----------------------------------------
+A brief description of the SUBSET program
+-----------------------------------------
+Scott Hannon, 16 March 2001
+
+The SUBSET program is a RTP utility program used to create a new
+RTP by pulling out a subset of the data found in the input RTP file.
+The subsetting may be done on:
+   profiles
+   channels
+   gases
+in any combination of the above.  For example, suppose some big
+RTP file cotains 12000 profiles, and you only care about a few
+of them, and furthermore you only care about a couple hundred
+channels.  using the SUBSET program you can quickly and easily
+create a new RTP file containing just the profiles and channels
+you want.
+
+The SUBSET prgram needs to be told what channels/profiles/gases
+you are interested in.  If you don't say, it assumes you want them
+all.  The profiles/channels/gases are specified by means of
+simple ASCII 1 colun text files containing the ID/index of the
+items of interest.  Channels are specified by channel ID number,
+gases by (HITRAN) gas ID number, and profiles by index in the
+input RTP.  These "list" text files all follow same format:
+a single column of ASCII numbers.  The only difference is what
+the numbers mean.  The lists *must* be sorted in ascending
+order, and no repeats are allowed.
+
+
+Command-line Arguments:
+----------------------
+Instructions for the program processing is handled by command-line
+arguments.  The valid commands are:
+
+    fin : name of input file; string [required]
+
+    fout : name of output file; string [required]
+
+    comment : new comment to be added to output RTP header; string
+       Note: comment string should be enclosed in quotes
+
+    chanlist : name of channel list textfile; string
+
+    proflist : name of profile list textfile; string
+
+    gaslist : name of gas list textfile; string
+
+
+Example lists:
+-------------
+See files example_chanlist, example_proflist, example_gaslist.  This
+example list files may be used with the "granule84.hdf" in the RTPip,
+RTPop, and/or RTPrad dirs.
+
+
+
+--- end of file ---

@@ -1,0 +1,44 @@
+-----------------------------------------
+Changes to the AIRS-RTA for PGE version 5
+-----------------------------------------
+Scott Hannon, 02 May 2007   <hannon@umbc.edu>
+
+The AIRS fast forward model used by the PGE version 5
+(AIRS-RTA v5) is the same basic model as used in version 4,
+but with the changes and additions noted below.
+
+Changes:
+
+1) The coefficient database for AIRS channels 1-130 (comprising
+detector module 12) were replaced to correct for a frequency
+error which was present in all previous versions.
+
+2) The optical depth tuning adjustments were redone to make use
+of the much larger set of validation data available since the
+v4 tuning was developed.  The v5 tuning was also extended
+to stratospheric channels in collaboration with the AIRS
+retrieval team.
+
+3) The algorithm used to estimate the radiance contribution from
+reflected downwelling atmospheric thermal emission was replaced.
+The new algorithm required some restructuring of the radiative
+transfer code for computational efficiency, but it provides a
+more accurate estimate at little extra computational cost.
+
+4) The algorithm responsible for handling the variability of
+trace gas CO2 was modified to allow for more flexibility. In
+v4 the CO2 variability was limited to an overall profile scale
+factor, while in v5 the variability can individually adjusted
+in each AIRS layer.
+
+Additions:
+
+5) Coefficients and code were added to allow modelling of
+the variability of trace gases SO2, HNO3, and N2O.  These gases
+were previously "fixed".
+
+6) Coefficients and code were added to model the effects
+of non-Local Thermodynamic Equilibrium in the AIRS shortwave
+stratospheric channels during daytime.
+
+---end of file---

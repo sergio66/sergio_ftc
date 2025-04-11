@@ -1,0 +1,231 @@
+Recommended HITRAN gas and cross-section gas ID numbers.
+Updated: 02 Feb 2007, S.Hannon
+
+Comments:
+   Gas IDs 1-39 correspond to the HITRAN 2004 database.
+
+   Gas IDs 51-57 are the numbers we (UMBC) use with some of the
+   cross-section gases included in the XSEC supplement to the
+   HITRAN 2000 database.
+
+   Gas IDs 101 and 102 are the numbers used by the kCARTA program
+   to specify the self- and foreign-broadened components of the
+   water continuum.
+
+   Gas IDs 201, 202, & 203 are the IDs we (UMBC) use to specify clouds
+   profiles (amounts).  These cloud IDs are merely an identifier,
+   eg "201" means the profile is for "cloud1", and the cloud ID
+   does NOT imply any particular set of cloud properties other than
+   profile amount.  In general, the cloud profile should be
+   supplemented by a separate set of RTP fields to specify all
+   additional relevant cloud properties (cloud type code number,
+   particle size, cloud fraction, et cetera).
+
+
+
+ ID  name
+---- -------------- 
+   1 H2O, water
+   2 CO2, carbon dioxide
+   3 O3, ozone
+   4 N2O, nitrous oxide
+   5 CO, carbon monoxide
+   6 CH4, methane
+   7 O2, (diatomic) oxygen
+   8 NO, nitric oxide
+   9 SO2, sulfur dioxide
+  10 NO2
+  11 NH3, ammonia
+  12 HNO3, nitric acid
+  13 OH, hydroxyl
+  14 HF, hydrogen floride
+  15 HCl, hydrocloric acid
+  16 HBr, hydrogen bromide
+  17 HI
+  18 ClO
+  19 OCS, carbonyl sulfide
+  20 H2CO
+  21 HOCl
+  22 N2, (diatomic) nitrogen
+  23 HCN
+  24 CH3Cl
+  25 H2O2
+  26 C2H2, acetylene
+  27 C2H6, ethane
+  28 PH3
+  29 COF2
+  30 SF6
+  31 H2S
+  32 HCOOH
+  33 HO2
+  34 O
+  35 ClONO2
+  36 NO+
+  37 HOBr
+  38 C2H4
+  39 CH3OH
+  40 
+  41 
+  42 
+  43 
+  44 
+  45 
+  46 
+  47 
+  48 
+  49 
+  50 
+  51 HNO3
+  52 CFCl3, CFC-11
+  53 CF2Cl2, CFC-12
+  54 CF4, "CFC-14"
+  55 ClONO2
+  56 N2O5
+  57 CCl4
+  58 
+  59 
+  60 
+  61 
+  62 
+  63 
+  64 
+  65 
+  66 
+  67 
+  68 
+  69 
+  70 
+  71 
+  72 
+  73 
+  74 
+  75 
+  76 
+  77 
+  78 
+  79 
+  80 
+  81 
+  82 
+  83 
+  84 
+  85 
+  86 
+  87 
+  88 
+  89 
+  90 
+  91 
+  92 
+  93 
+  94 
+  95 
+  96 
+  97 
+  98 
+  99 
+ 100 
+ 101 kCARTA H2O self-broadened continuum
+ 102 kCARTA H2O foreign-broadened continuum
+ 103 
+ 104 
+ 105 
+ 106 
+ 107 
+ 108 
+ 109 
+ 110 
+ 111 
+ 112 
+ 113 
+ 114 
+ 115 
+ 116 
+ 117 
+ 118 
+ 119 
+ 120 
+ 121 
+ 122 
+ 123 
+ 124 
+ 125 
+ 126 
+ 127 
+ 128 
+ 129 
+ 130 
+ 131 
+ 132 
+ 133 
+ 134 
+ 135 
+ 136 
+ 137 
+ 138 
+ 139 
+ 140 
+ 141 
+ 142 
+ 143 
+ 144 
+ 145 
+ 146 
+ 147 
+ 148 
+ 149 
+ 150 
+ 151 
+ 152 
+ 153 
+ 154 
+ 155 
+ 156 
+ 157 
+ 158 
+ 159 
+ 160 
+ 161 
+ 162 
+ 163 
+ 164 
+ 165 
+ 166 
+ 167 
+ 168 
+ 169 
+ 170 
+ 171 
+ 172 
+ 173 
+ 174 
+ 175 
+ 176 
+ 177 
+ 178 
+ 179 
+ 180 
+ 181 
+ 182 
+ 183 
+ 184 
+ 185 
+ 186 
+ 187 
+ 188 
+ 189 
+ 190 
+ 191 
+ 192 
+ 193 
+ 194 
+ 195 
+ 196 
+ 197 
+ 198 
+ 199 
+ 200 
+ 201 cloud1
+ 202 cloud2
+ 203 cloud3
+---end of file---

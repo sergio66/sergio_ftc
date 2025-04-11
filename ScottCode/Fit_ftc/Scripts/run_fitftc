@@ -1,0 +1,183 @@
+FITSET=$1
+DATATYPE=$2
+DATANAME=$3
+CSNAME=$4
+
+###############################################################################
+# Edit this section as needed
+#
+# PROFS: profile numbers
+PROFS=' 1  2  3  4  5  6  7  8 9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24
+       25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48'
+#
+# PROGRAM: name prefix of program
+# note: full name = <program><fit set>'_'<data type>
+PROGRAM='../Bin/fit_'
+#
+# DATAEXT: name suffix for data files
+DATAEXT='.dat'
+#
+# REFPROF: name of reference profile
+#REFPROF='profref_truth_july2000'
+REFPROF='profref_trace385'
+#
+# OUTDIR: name of output directory
+OUTDIR='../Coef'
+#
+# OUTNAME: name prefix of output coef file 
+# note: full name = <out dir>'/'<out name><fit set>'_'<data type><data ext>
+OUTNAME='rawcoef_'
+#
+# OPTRANGRID: name of OPTRAN grid file
+OPTRANGRID='azfwocm_jul00.txt'
+#
+# PREDAVG: name of average predictor file for OPTRAN output
+PREDAVG='predavg.txt'
+
+
+###############################################################################
+# Supported sets and types
+ALLSET='{ set1 set2 set3 set4 set5 set6 set7 optran co2 co2_5term }'
+#ALLTYPE='{ fowp fmw fcowp_sun fowp_sun }'
+ALLTYPE='{ fowp fmw fcow_sun fowp_sun }'
+
+
+###############################################################################
+# Prompt for input if not already specified on command-line
+X1=$FITSET'-'
+X2=$DATATYPE'-'
+X3=$DATANAME'-'
+X4=$CSNAME'-'
+if (test $X1 = '-')
+then
+   echo 'Fit which set? '$ALLSET
+   read FITSET
+fi
+if (test $X2 = '-')
+then
+   echo 'Which conv trans file type? '$ALLTYPE
+   read DATATYPE
+fi
+if (test $X3 = '-')
+then
+   echo 'Enter data name prefix (full name=<name prefix><prof#>'$DATAEXT')'
+   read DATANAME
+fi
+if (test $X4 = '-')
+then
+   echo 'Enter channel set name (m130x, m150, etc)'
+   read CSNAME
+fi
+
+###############################################################################
+# Set variables depending on FITSET and DATATYPE
+
+# Check FITSET
+IOK=`echo $ALLSET | grep " $FITSET " | cut -f1 -d" "`
+if (test -z $IOK'')
+then
+   echo 'error: unsupported <fit set> = '$FITSET
+   echo 'supported <fit set> = '$ALLSET
+   exit
+fi
+
+
+# Check DATATYPE
+IOK=`echo $ALLTYPE | grep " $DATATYPE " | cut -f1 -d" "`
+if (test -z $IOK'')
+then
+   echo 'error: unsupported <data type> = '$DATATYPE
+   echo 'supported <data type> = '$ALLTYPE
+   exit
+fi
+
+
+# Test the ref profile file exists
+if (test ! -r $REFPROF)
+then
+   echo 'error: did not find ref prof file: '$REFPROF
+   exit
+fi
+
+
+DATE=`date`
+echo 'Start run_fitftc at: '$DATE
+
+
+# Check if the output dir exists
+if (test ! -d $OUTDIR)
+then
+   mkdir $OUTDIR
+fi
+
+###############################################################################
+# Create "jin" instruction file
+JIN='jin_'$FITSET'_'$DATATYPE
+JOUT='jout_'$FITSET'_'$DATATYPE
+rm -f $JIN
+
+if (test $FITSET = 'optran')
+then
+   # Instructions for optran
+   if (test ! -r $OPTRANGRID)
+   then
+      echo 'error: can not read optran grid file : '$OPTRANGRID
+      exit
+   fi
+   rm -f $PREDAVG
+   echo $OPTRANGRID > $JIN
+   echo $REFPROF >> $JIN
+   for iprof in $PROFS
+   do
+      FILE=$DATANAME$iprof$DATAEXT
+      if (test ! -r $FILE)
+      then
+         echo 'error: can not read data file : '$FILE
+         exit
+      fi
+      echo $FILE >> $JIN
+   done
+#   FILE=$OUTDIR'/'$OUTNAME$FITSET'_'$DATATYPE$DATAEXT
+   FILE=$OUTDIR'/'$CSNAME'_'$OUTNAME$FITSET'_'$DATATYPE$DATAEXT
+   echo $FILE >> $JIN
+   #
+else
+   # Instructions for all except optran
+   for iprof in $PROFS
+   do
+      FILE=$DATANAME$iprof$DATAEXT
+      if (test ! -r $FILE)
+      then
+         echo 'error: can not read data file : '$FILE
+         exit
+      fi
+      echo $FILE >> $JIN
+   done
+   echo $REFPROF >> $JIN
+#   FILE=$OUTDIR'/'$OUTNAME$FITSET'_'$DATATYPE$DATAEXT
+   FILE=$OUTDIR'/'$CSNAME'_'$OUTNAME$FITSET'_'$DATATYPE$DATAEXT
+   echo $FILE >> $JIN
+fi
+
+###############################################################################
+# Run the program
+EXE=$PROGRAM$FITSET'_'$DATATYPE
+if (test ! -x $EXE)
+then
+   echo 'error: can not run program: '$EXE
+   exit
+fi
+$EXE < $JIN > $JOUT
+
+
+DATE=`date`
+echo 'Finish run_fitftc at: '$DATE
+
+
+## display end of jout to see if there is an error message
+#echo '---------------- tail of '$JOUT '----------------------'
+#tail -5 $JOUT
+#echo '---------------------------------------------------------------------'
+
+
+### end of script ###

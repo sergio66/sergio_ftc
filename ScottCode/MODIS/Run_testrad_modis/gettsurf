@@ -1,0 +1,10 @@
+TFILE='reg_all_tsurf.txt'
+PREFIX='../Prof_fow/fow_reg'
+rm -f ${TFILE}
+ii='1'
+while (test ${ii} -le 48)
+do
+   sed -n '4p' ${PREFIX}${ii}'.op' | cut -c17-24 >> ${TFILE}
+   oi=${ii}
+   ii=`expr ${oi} + 1`
+done

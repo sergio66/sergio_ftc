@@ -1,0 +1,8 @@
+Run times for "runtherm" reflected thermal calculations (48 profiles)
+
+12 April 2002:
+   7.3 hours on taro for short band.
+
+16 April 2002:
+   14.6 hours on yam for long band.
+

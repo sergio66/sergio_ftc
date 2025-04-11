@@ -1,0 +1,7 @@
+runso2_130 short > jout130_short
+runso2_140 short > jout140_short
+runso2_150 short > jout150_short
+
+runso2_130 long > jout130_long
+runso2_140 long > jout140_long
+runso2_150 long > jout150_long
